@@ -1,0 +1,39 @@
+ClassId: bulk.MoCloner
+Sources: 
+  - MoRef:server.ProfileTemplate[AI-OCP-fi-control]
+Targets:
+  - Name: AI-OCP.fi.control.node1
+    ObjectType: server.Profile
+    Organization: MoRef:organization.Organization[default]
+#    ServerPool: MoRef:resourcepool.Pool[AI-IMC-POOL]
+#    ServerAssignmentMode: pool
+  - Name: AI-OCP.fi.control.node2
+    ObjectType: server.Profile
+    Organization: MoRef:organization.Organization[default]
+#    ServerPool: MoRef:resourcepool.Pool[AI-IMC-POOL]
+#    ServerAssignmentMode: pool
+  - Name: AI-OCP.fi.control.node3
+    ObjectType: server.Profile
+    Organization: MoRef:organization.Organization[default]
+#    ServerPool: MoRef:resourcepool.Pool[AI-IMC-POOL]
+#    ServerAssignmentMode: pool
+
+# to delete derived profiles
+# isctl delete server profile name AI-OCP-01
+# isctl delete server profile name AI-OCP-02
+---
+
+ClassId: bulk.MoCloner
+Sources: 
+  - MoRef:server.ProfileTemplate[AI-OCP-fi-worker]
+Targets:
+  - Name: AI-OCP.fi.worker.node1
+    ObjectType: server.Profile
+    Organization: MoRef:organization.Organization[default]
+#    ServerPool: MoRef:resourcepool.Pool[AI-IMC-POOL]
+#    ServerAssignmentMode: pool
+  - Name: AI-OCP.fi.worker.node2
+    ObjectType: server.Profile
+    Organization: MoRef:organization.Organization[default]
+#    ServerPool: MoRef:resourcepool.Pool[AI-IMC-POOL]
+#    ServerAssignmentMode: pool

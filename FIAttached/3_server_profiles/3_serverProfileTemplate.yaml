@@ -1,0 +1,51 @@
+ClassId: server.ProfileTemplate
+Name: AI-OCP-fi-control
+Organization: default
+Description: Automanted Deployment
+#settings
+TargetPlatform: FIAttached
+UuidAddressType: POOL
+UuidPool: MoRef[default\AI-UUID]
+Type: instance
+PolicyBucket:
+  - MoRef:bios.Policy[default\AI-fi-control-BIOS]
+  - MoRef:boot.PrecisionPolicy[default\AI-fi-control-Boot]
+  - MoRef:ipmioverlan.Policy[default\AI-fi-control-IPMI-off]
+  - MoRef:kvm.Policy[default\AI-fi-control-TunneledKVM]
+  - MoRef:sol.Policy[default\AI-fi-control-SOL]
+  - MoRef:storage.StoragePolicy[default\AI-fi-control-M.2]
+  - MoRef:vnic.LanConnectivityPolicy[default\AI-fi-control-LAN]
+  - MoRef:access.Policy[default\AI-IMC-INBAND]
+  - MoRef:power.Policy[default\AI-Power]
+  - MoRef:firmware.Policy[default\AI-fi-control-Firmware]
+  - MoRef:thermal.Policy[default\AI-Thermal]
+  - MoRef:vmedia.Policy[default\AI-fi-control-vMedia-Empty]
+  - MoRef:iam.EndPointUserPolicy[default\AI-fi-control-LocalAdmin]
+  - MoRef:snmp.Policy[default\AI-SNMP]
+
+---
+
+ClassId: server.ProfileTemplate
+Name: AI-OCP-fi-worker
+Organization: default
+Description: Automanted Deployment
+#settings
+TargetPlatform: FIAttached
+UuidAddressType: POOL
+UuidPool: MoRef[default\AI-UUID]
+Type: instance
+PolicyBucket:
+  - MoRef:bios.Policy[default\AI-fi-worker-BIOS]
+  - MoRef:boot.PrecisionPolicy[default\AI-fi-worker-Boot]
+  - MoRef:ipmioverlan.Policy[default\AI-fi-worker-IPMI-off]
+  - MoRef:kvm.Policy[default\AI-fi-worker-TunneledKVM]
+  - MoRef:sol.Policy[default\AI-fi-worker-SOL]
+  - MoRef:storage.StoragePolicy[default\AI-fi-worker-M.2]
+  - MoRef:vnic.LanConnectivityPolicy[default\AI-fi-worker-LAN]
+  - MoRef:access.Policy[default\AI-IMC-INBAND]
+  - MoRef:power.Policy[default\AI-Power]
+  - MoRef:firmware.Policy[default\AI-fi-worker-Firmware]
+  - MoRef:thermal.Policy[default\AI-Thermal]
+  - MoRef:vmedia.Policy[default\AI-fi-worker-vMedia-Empty]
+  - MoRef:iam.EndPointUserPolicy[default\AI-fi-worker-LocalAdmin]
+  - MoRef:snmp.Policy[default\AI-SNMP]

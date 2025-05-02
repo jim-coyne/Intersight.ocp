@@ -1,0 +1,485 @@
+---
+ClassId: storage.StoragePolicy
+Name: AI-fi-control-M.2
+Organization: default
+#settings
+M2VirtualDrive:
+  ClassId: storage.M2VirtualDriveConfig
+  ObjectType: storage.M2VirtualDriveConfig
+  Enable: true
+  ControllerSlot: MSTOR-RAID-1
+UnusedDisksState: Jbod
+---
+ClassId: vnic.EthNetworkPolicy
+Name: AI-fi-control-Trunk
+Organization: default
+#settings
+VlanSettings:
+  ClassId: vnic.VlanSettings
+  ObjectType: vnic.VlanSettings
+  AllowedVlans: "70"
+  DefaultVlan: 0
+  Mode: TRUNK
+---
+ClassId: vnic.EthIf
+Name: Eth0
+#settings
+FailoverEnabled: true
+EthAdapterPolicy: MoRef[default\AI-fi-control-Linux]
+EthNetworkPolicy: MoRef[default\AI-fi-control-Trunk]
+EthQosPolicy: MoRef[default\AI-fi-control-QOS-server]
+FabricEthNetworkControlPolicy: MoRef[default\AI-fi-control-LLDP]
+FabricEthNetworkGroupPolicy: 
+  - MoRef[default\AI-fi-control-ALLOWED-VLANS]
+LanConnectivityPolicy: MoRef[default\AI-fi-control-LAN]
+MacPool: MoRef[default\AI-MAC-A]
+MacAddressType: "POOL"
+Order: 0
+Placement:
+  ClassId: vnic.PlacementSettings
+  AutoSlotId: true
+  SwitchId: A
+---
+ClassId: vnic.EthIf
+Name: Eth1
+#settings
+FailoverEnabled: true
+EthAdapterPolicy: MoRef[default\AI-fi-control-Linux]
+EthNetworkPolicy: MoRef[default\AI-fi-control-Trunk]
+EthQosPolicy: MoRef[default\AI-fi-control-QOS-server]
+FabricEthNetworkControlPolicy: MoRef[default\AI-fi-control-LLDP]
+FabricEthNetworkGroupPolicy: 
+  - MoRef[default\AI-fi-control-ALLOWED-VLANS]
+LanConnectivityPolicy: MoRef[default\AI-fi-control-LAN]
+MacPool: MoRef[default\AI-MAC-B]
+MacAddressType: "POOL"
+Order: 0
+Placement:
+  ClassId: vnic.PlacementSettings
+  AutoSlotId: true
+  SwitchId: B
+---
+ClassId: boot.PrecisionPolicy
+Name: AI-fi-control-Boot
+Organization: default
+#settings
+BootDevices:
+- Bootloader:
+  ObjectType: boot.LocalDisk
+  Enabled: true
+  Name: M2
+  Slot: MSTOR-RAID
+- ObjectType: boot.VirtualMedia
+  Enabled: false
+  Name: CIMC-DVD
+  Subtype: cimc-mapped-dvd
+---
+ClassId: ipmioverlan.Policy
+Name: AI-fi-control-IPMI-off
+Organization: default
+#settings
+Enabled: false
+---
+ClassId: kvm.Policy
+Name: AI-fi-control-TunneledKVM
+Organization: default
+#settings
+TunneledKvmEnabled: true
+---
+ClassId: bios.Policy
+Name: AI-fi-control-BIOS
+Organization: default
+#settings are empty because the defaults suffice.
+---
+ClassId: vnic.LanConnectivityPolicy
+Name: AI-fi-control-LAN
+Organization: default
+#settings
+TargetPlatform: FIAttached
+---
+ClassId: fabric.EthNetworkGroupPolicy
+Name: AI-fi-control-ALLOWED-VLANS
+Organization: default
+VlanSettings:
+  ClassId: fabric.VlanSettings
+  AllowedVlans: "70"
+  QinqEnabled: false
+  NativeVlan: 1
+---
+ClassId: fabric.EthNetworkControlPolicy
+Name: AI-fi-control-LLDP
+Organization: default 
+#settings
+CdpEnabled: true
+ForgeMac: allow
+LldpSettings:
+  ClassId: fabric.LldpSettings
+  ReceiveEnabled: true
+  TransmitEnabled: true
+MacRegistrationMode: allVlans
+UplinkFailAction: linkDown
+---
+ClassId: iam.EndPointUserPolicy
+Organization: default
+Name: AI-fi-control-LocalAdmin
+#settings
+PasswordProperties:
+  ClassId: iam.EndPointPasswordProperties
+  EnablePasswordExpiry: false
+  EnforceStrongPassword: true
+  ForceSendPassword: false
+  GracePeriod: 0
+  NotificationPeriod: 15
+  PasswordExpiryDuration: 90
+  PasswordHistory: 0
+---
+ClassId: iam.EndPointUser
+Organization: default
+Name: admin
+---
+ClassId: iam.EndPointUserRole
+#settings
+Enabled: true
+EndPointRole: 
+  - MoRef:iam.EndPointRole[$filter:Type eq 'IMC' and Name eq 'admin']
+EndPointUser: MoRef[default\admin]
+EndPointUserPolicy: MoRef[default\AI-fi-control-LocalAdmin]
+Password: Cisco123
+---
+ClassId: firmware.Policy
+Name: AI-fi-control-Firmware
+Organization: default
+#settings
+ModelBundleCombo:
+- BundleVersion: 5.2(0.230092)
+  ClassId: firmware.ModelBundleVersion
+  ModelFamily: UCSX-210C-M6
+  ObjectType: firmware.ModelBundleVersion
+TargetPlatform: FIAttached
+---
+ClassId: vmedia.Policy
+Name: AI-fi-control-vMedia-Empty
+Organization: default
+#settings
+Enabled: true
+Encryption: true
+LowPowerUsb: true
+Mappings: []
+---
+ClassId: vnic.EthQosPolicy
+Name: AI-fi-control-QOS-server
+Organization: default
+#settings are empty because the defaults suffice.
+---
+ClassId: sol.Policy
+Name: AI-fi-control-SOL
+Organization: default
+#settings are empty because the defaults suffice.
+---
+ClassId: vnic.EthAdapterPolicy
+Name: AI-fi-control-Linux
+Organization: default
+#settings
+AdvancedFilter: false
+ArfsSettings:
+  ClassId: vnic.ArfsSettings
+  Enabled: false
+CompletionQueueSettings:
+  ClassId: vnic.CompletionQueueSettings
+  Count: 2
+  RingSize: 1
+GeneveEnabled: false
+InterruptScaling: false
+InterruptSettings:
+  ClassId: vnic.EthInterruptSettings
+  CoalescingTime: 125
+  CoalescingType: MIN
+  Count: 4
+  Mode: MSIx
+NvgreSettings:
+  ClassId: vnic.NvgreSettings
+  Enabled: false
+PtpSettings:
+  ClassId: vnic.PtpSettings
+  Enabled: false
+RoceSettings:
+  ClassId: vnic.RoceSettings
+  ClassOfService: 5
+  Enabled: false
+  MemoryRegions: 0
+  QueuePairs: 0
+  ResourceGroups: 0
+  Version: 1
+RssHashSettings:
+  ClassId: vnic.RssHashSettings
+  Ipv4Hash: false
+  Ipv6ExtHash: false
+  Ipv6Hash: false
+  TcpIpv4Hash: false
+  TcpIpv6ExtHash: false
+  TcpIpv6Hash: false
+  UdpIpv4Hash: false
+  UdpIpv6Hash: false
+RssSettings: false
+RxQueueSettings:
+  ClassId: vnic.EthRxQueueSettings
+  Count: 1
+  RingSize: 512
+TcpOffloadSettings:
+  ClassId: vnic.TcpOffloadSettings
+  LargeReceive: true
+  LargeSend: true
+  RxChecksum: true
+  TxChecksum: true
+TxQueueSettings:
+  ClassId: vnic.EthTxQueueSettings
+  Count: 1
+  RingSize: 256
+UplinkFailbackTimeout: 5
+VxlanSettings:
+  ClassId: vnic.VxlanSettings
+  Enabled: false
+
+##
+
+---
+ClassId: storage.StoragePolicy
+Name: AI-fi-worker-M.2
+Organization: default
+#settings
+M2VirtualDrive:
+  ClassId: storage.M2VirtualDriveConfig
+  ObjectType: storage.M2VirtualDriveConfig
+  Enable: true
+  ControllerSlot: MSTOR-RAID-1
+UnusedDisksState: Jbod
+---
+ClassId: vnic.EthNetworkPolicy
+Name: AI-fi-worker-Trunk
+Organization: default
+#settings
+VlanSettings:
+  ClassId: vnic.VlanSettings
+  ObjectType: vnic.VlanSettings
+  AllowedVlans: "70"
+  DefaultVlan: 0
+  Mode: TRUNK
+---
+ClassId: vnic.EthIf
+Name: Eth0
+#settings
+FailoverEnabled: true
+EthAdapterPolicy: MoRef[default\AI-fi-worker-Linux]
+EthNetworkPolicy: MoRef[default\AI-fi-worker-Trunk]
+EthQosPolicy: MoRef[default\AI-fi-worker-QOS-server]
+FabricEthNetworkControlPolicy: MoRef[default\AI-fi-worker-LLDP]
+FabricEthNetworkGroupPolicy: 
+  - MoRef[default\AI-fi-worker-ALLOWED-VLANS]
+LanConnectivityPolicy: MoRef[default\AI-fi-worker-LAN]
+MacPool: MoRef[default\AI-MAC-A]
+MacAddressType: "POOL"
+Order: 0
+Placement:
+  ClassId: vnic.PlacementSettings
+  AutoSlotId: true
+  SwitchId: A
+---
+ClassId: vnic.EthIf
+Name: Eth1
+#settings
+FailoverEnabled: true
+EthAdapterPolicy: MoRef[default\AI-fi-worker-Linux]
+EthNetworkPolicy: MoRef[default\AI-fi-worker-Trunk]
+EthQosPolicy: MoRef[default\AI-fi-worker-QOS-server]
+FabricEthNetworkControlPolicy: MoRef[default\AI-fi-worker-LLDP]
+FabricEthNetworkGroupPolicy: 
+  - MoRef[default\AI-fi-worker-ALLOWED-VLANS]
+LanConnectivityPolicy: MoRef[default\AI-fi-worker-LAN]
+MacPool: MoRef[default\AI-MAC-B]
+MacAddressType: "POOL"
+Order: 0
+Placement:
+  ClassId: vnic.PlacementSettings
+  AutoSlotId: true
+  SwitchId: B
+---
+ClassId: boot.PrecisionPolicy
+Name: AI-fi-worker-Boot
+Organization: default
+#settings
+BootDevices:
+- Bootloader:
+  ObjectType: boot.LocalDisk
+  Enabled: true
+  Name: M2
+  Slot: MSTOR-RAID
+- ObjectType: boot.VirtualMedia
+  Enabled: false
+  Name: CIMC-DVD
+  Subtype: cimc-mapped-dvd
+---
+ClassId: ipmioverlan.Policy
+Name: AI-fi-worker-IPMI-off
+Organization: default
+#settings
+Enabled: false
+---
+ClassId: kvm.Policy
+Name: AI-fi-worker-TunneledKVM
+Organization: default
+#settings
+TunneledKvmEnabled: true
+---
+ClassId: bios.Policy
+Name: AI-fi-worker-BIOS
+Organization: default
+#settings are empty because the defaults suffice.
+---
+ClassId: vnic.LanConnectivityPolicy
+Name: AI-fi-worker-LAN
+Organization: default
+#settings
+TargetPlatform: FIAttached
+---
+ClassId: fabric.EthNetworkGroupPolicy
+Name: AI-fi-worker-ALLOWED-VLANS
+Organization: default
+VlanSettings:
+  ClassId: fabric.VlanSettings
+  AllowedVlans: "70"
+  QinqEnabled: false
+  NativeVlan: 1
+---
+ClassId: fabric.EthNetworkControlPolicy
+Name: AI-fi-worker-LLDP
+Organization: default 
+#settings
+CdpEnabled: true
+ForgeMac: allow
+LldpSettings:
+  ClassId: fabric.LldpSettings
+  ReceiveEnabled: true
+  TransmitEnabled: true
+MacRegistrationMode: allVlans
+UplinkFailAction: linkDown
+---
+ClassId: iam.EndPointUserPolicy
+Organization: default
+Name: AI-fi-worker-LocalAdmin
+#settings
+PasswordProperties:
+  ClassId: iam.EndPointPasswordProperties
+  EnablePasswordExpiry: false
+  EnforceStrongPassword: true
+  ForceSendPassword: false
+  GracePeriod: 0
+  NotificationPeriod: 15
+  PasswordExpiryDuration: 90
+  PasswordHistory: 0
+---
+ClassId: iam.EndPointUser
+Organization: default
+Name: admin
+---
+ClassId: iam.EndPointUserRole
+#settings
+Enabled: true
+EndPointRole: 
+  - MoRef:iam.EndPointRole[$filter:Type eq 'IMC' and Name eq 'admin']
+EndPointUser: MoRef[default\admin]
+EndPointUserPolicy: MoRef[default\AI-fi-worker-LocalAdmin]
+Password: Cisco123
+---
+ClassId: firmware.Policy
+Name: AI-fi-worker-Firmware
+Organization: default
+#settings
+ModelBundleCombo:
+- BundleVersion: 5.2(0.230092)
+  ClassId: firmware.ModelBundleVersion
+  ModelFamily: UCSX-210C-M6
+  ObjectType: firmware.ModelBundleVersion
+TargetPlatform: FIAttached
+---
+ClassId: vmedia.Policy
+Name: AI-fi-worker-vMedia-Empty
+Organization: default
+#settings
+Enabled: true
+Encryption: true
+LowPowerUsb: true
+Mappings: []
+---
+ClassId: vnic.EthQosPolicy
+Name: AI-fi-worker-QOS-server
+Organization: default
+#settings are empty because the defaults suffice.
+---
+ClassId: sol.Policy
+Name: AI-fi-worker-SOL
+Organization: default
+#settings are empty because the defaults suffice.
+---
+ClassId: vnic.EthAdapterPolicy
+Name: AI-fi-worker-Linux
+Organization: default
+#settings
+AdvancedFilter: false
+ArfsSettings:
+  ClassId: vnic.ArfsSettings
+  Enabled: false
+CompletionQueueSettings:
+  ClassId: vnic.CompletionQueueSettings
+  Count: 2
+  RingSize: 1
+GeneveEnabled: false
+InterruptScaling: false
+InterruptSettings:
+  ClassId: vnic.EthInterruptSettings
+  CoalescingTime: 125
+  CoalescingType: MIN
+  Count: 4
+  Mode: MSIx
+NvgreSettings:
+  ClassId: vnic.NvgreSettings
+  Enabled: false
+PtpSettings:
+  ClassId: vnic.PtpSettings
+  Enabled: false
+RoceSettings:
+  ClassId: vnic.RoceSettings
+  ClassOfService: 5
+  Enabled: false
+  MemoryRegions: 0
+  QueuePairs: 0
+  ResourceGroups: 0
+  Version: 1
+RssHashSettings:
+  ClassId: vnic.RssHashSettings
+  Ipv4Hash: false
+  Ipv6ExtHash: false
+  Ipv6Hash: false
+  TcpIpv4Hash: false
+  TcpIpv6ExtHash: false
+  TcpIpv6Hash: false
+  UdpIpv4Hash: false
+  UdpIpv6Hash: false
+RssSettings: false
+RxQueueSettings:
+  ClassId: vnic.EthRxQueueSettings
+  Count: 1
+  RingSize: 512
+TcpOffloadSettings:
+  ClassId: vnic.TcpOffloadSettings
+  LargeReceive: true
+  LargeSend: true
+  RxChecksum: true
+  TxChecksum: true
+TxQueueSettings:
+  ClassId: vnic.EthTxQueueSettings
+  Count: 1
+  RingSize: 256
+UplinkFailbackTimeout: 5
+VxlanSettings:
+  ClassId: vnic.VxlanSettings
+  Enabled: false
