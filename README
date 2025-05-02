@@ -1,14 +1,10 @@
-This repository will hold everything you need to setup the Intersight workflow to provision OpenShift baremetal clusters.
-https://github.com/baelen-git/Provision-OpenShift-Baremetal/blob/main/README.MD
 
+Configuration files to deploy pools, policies and profiles required to configure Intersight and prepare servers for Red Hat OpenShift.
 
 isctl is a kubectl-insipired CLI for the Cisco Intersight service.
+
 https://github.com/cgascoig/isctl/tree/devel
 
-
-MAC:
 brew install cgascoig/isctl/isctl
 
-or 
-
-https://github.com/cgascoig/isctl/releases/tag/v0.2
+https://github.com/cgascoig/isctl/releases/tag/v0.2.7
