@@ -1,3 +1,4 @@
+# Intersight Configuration for Red Hat OpenShift
 
 Configuration files to deploy pools, policies and profiles required to configure Intersight and prepare servers for Red Hat OpenShift.
 
@@ -22,30 +23,42 @@ Run isctl configure to configure it to use your API key. Follow the prompts for 
 
 StandAlone Servers:
 
+```
  isctl apply -f 1_allPolicies.yaml
  isctl apply -f 2_serverProfileTemplate.control.yaml
  isctl apply -f 3_serverProfileTemplate.worker.yaml
  isctl apply -f 4_deriveProfiles.yaml
 
+```
+
 FIAttached Servers:
+
+```
   
 cd 1_domain_profile/
  isctl apply -f 1_vlanpolicy.yaml
  isctl apply -f 2_portpolicy.yaml
  isctl apply -f 3_switchpolicies.yaml
  isctl apply -f 4_domain_profile.yaml
+
+```
+```
  
 cd 2_chassis_profile/
  isctl apply 1_pools.yaml
  isctl apply 2_policies.yaml
  isctl apply 3_chassis_profile.yaml
  
+```
+```
+
 cd 3_server_profiles/
  isctl apply 1_UUID_Pool.yaml
  isctl apply 2_policies.yaml
  isctl apply 3_serverProfileTemplate.yaml
  isctl apply 4_server_profiles.yaml
 
+```
 
 ![Policies](./policies.png)
 
