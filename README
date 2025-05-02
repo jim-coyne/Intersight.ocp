@@ -9,7 +9,7 @@ brew install cgascoig/isctl/isctl
 
 https://github.com/cgascoig/isctl/releases/tag/v0.2.7
 
-DEVICE SHOULD BE CLAIMED IN INTERSIGHT
+DEVICES SHOULD BE CLAIMED IN INTERSIGHT
 
 YOU MUST EDIT ALL YAML FILES TO MATCH YOUR ENVIRONMENT
 
@@ -31,7 +31,7 @@ cd 1_domain_profile/
 cd 2_chassis_profile/
  isctl apply 1_pools.yaml
  isctl apply 2_policies.yaml
- isctl apply 3_chassis_profile
+ isctl apply 3_chassis_profile.yaml
  
 cd 3_server_profiles/
  isctl apply 1_UUID_Pool.yaml
