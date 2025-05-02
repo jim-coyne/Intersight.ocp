@@ -47,4 +47,8 @@ cd 3_server_profiles/
  isctl apply 4_server_profiles.yaml
 
 
+![Policies](policies.png)
+
+
+
   
