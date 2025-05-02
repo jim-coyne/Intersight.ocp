@@ -11,7 +11,14 @@ https://github.com/cgascoig/isctl/releases/tag/v0.2.7
 
 DEVICES SHOULD BE CLAIMED IN INTERSIGHT
 
+Follow the Quick Start guide to claim Fabric Interconnects:
+https://www.cisco.com/c/en/us/products/collateral/servers-unified-computing/ucs-x-series-modular-system/ucs-x-series-quick-start-guide.html
+
 YOU MUST EDIT ALL YAML FILES TO MATCH YOUR ENVIRONMENT
+
+** Using isctl **
+
+Run isctl configure to configure it to use your API key. Follow the prompts for your key ID and path to the key file.
 
 StandAlone Servers:
 
@@ -38,5 +45,6 @@ cd 3_server_profiles/
  isctl apply 2_policies.yaml
  isctl apply 3_serverProfileTemplate.yaml
  isctl apply 4_server_profiles.yaml
+
 
   
