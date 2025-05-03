@@ -84,12 +84,12 @@ ClassId: kvm.Policy
 Name: {{prefix}}fi-control-TunneledKVM
 Organization: {{organization}}
 #settings
-TunneledKvmEnabled: {{TKVM}}
+TunneledKvmEnabled: {{AllowTunneledKVM}}
+Enable: {{EnableKVM}}
 ---
 ClassId: bios.Policy
 Name: {{prefix}}fi-control-BIOS
 Organization: {{organization}}
-
 ---
 ClassId: vnic.LanConnectivityPolicy
 Name: {{prefix}}fi-control-LAN
@@ -102,7 +102,7 @@ Name: {{prefix}}fi-control-ALLOWED-VLANS
 Organization: {{organization}}
 VlanSettings:
   ClassId: fabric.VlanSettings
-  AllowedVlans: "70"
+  AllowedVlans: {{AllowedVlans}}
   QinqEnabled: false
   NativeVlan: 1
 ---
@@ -169,12 +169,43 @@ Mappings: []
 ClassId: vnic.EthQosPolicy
 Name: {{prefix}}fi-control-QOS-server
 Organization: {{organization}}
-
 ---
 ClassId: sol.Policy
 Name: {{prefix}}fi-control-SOL
 Organization: {{organization}}
-
+#settings
+Enabled: {{Enabled}}
+---
+ClassId: ntp.Policy
+Name: {{prefix}}fi-control-NTP
+Organization: {{organization}}
+#settings
+Enabled: {{EnableNTP}}
+NtpServers: {{NTPServer}}
+---
+ClassId: smtp.Policy
+Name: {{prefix}}fi-control-SMTP
+Organization: {{organization}}
+#settings
+Enabled: {{EnableSMTP}}
+SmtpServer: {{SMTPServer}}
+SmtpPort: {{SMTPPort}}
+Sender: {{SMTPSender}}
+Receivers: [{{Email1}}]
+---
+ClassId: ssh.Policy
+Name: {{prefix}}fi-control-SSH
+Organization: {{organization}}
+#settings
+Enabled: {{EnableSSH}}
+Port: {{SSHPort}}
+Timeout: {{SSHTimeout}}
+---
+ClassId: deviceconnector.Policy
+Name: {{prefix}}fi-control-DeviceConnector
+Organization: {{organization}}
+#settings
+IntersightOnly: {{IntersightOnly}}
 ---
 ClassId: vnic.EthAdapterPolicy
 Name: {{prefix}}fi-control-Linux
@@ -239,9 +270,6 @@ UplinkFailbackTimeout: 5
 VxlanSettings:
   ClassId: vnic.VxlanSettings
   Enabled: false
-
-##
-
 ---
 ClassId: storage.StoragePolicy
 Name: {{prefix}}fi-worker-M.2
@@ -261,9 +289,9 @@ Organization: {{organization}}
 VlanSettings:
   ClassId: vnic.VlanSettings
   ObjectType: vnic.VlanSettings
-  AllowedVlans: "70"
-  DefaultVlan: 0
-  Mode: TRUNK
+  AllowedVlans: {{AllowedVlans}}
+  DefaultVlan: {{DefaultVLAN}}
+  Mode: {{TrunkMode}}
 ---
 ClassId: vnic.EthIf
 Name: Eth0
@@ -314,7 +342,7 @@ BootDevices:
   Name: M2
   Slot: MSTOR-RAID
 - ObjectType: boot.VirtualMedia
-  Enabled: false
+  Enabled: {{bootVMedia}}
   Name: CIMC-DVD
   Subtype: cimc-mapped-dvd
 ---
@@ -322,18 +350,18 @@ ClassId: ipmioverlan.Policy
 Name: {{prefix}}fi-worker-IPMI
 Organization: {{organization}}
 #settings
-Enabled: false
+Enabled: {{Enable}}
 ---
 ClassId: kvm.Policy
 Name: {{prefix}}fi-worker-TunneledKVM
 Organization: {{organization}}
 #settings
-TunneledKvmEnabled: {{TKVM}}
+TunneledKvmEnabled: {{AllowTunneledKVM}}
+Enable: {{EnableKVM}}
 ---
 ClassId: bios.Policy
 Name: {{prefix}}fi-worker-BIOS
 Organization: {{organization}}
-
 ---
 ClassId: vnic.LanConnectivityPolicy
 Name: {{prefix}}fi-worker-LAN
@@ -346,7 +374,7 @@ Name: {{prefix}}fi-worker-ALLOWED-VLANS
 Organization: {{organization}}
 VlanSettings:
   ClassId: fabric.VlanSettings
-  AllowedVlans: "70"
+  AllowedVlans: {{AllowedVlans}}
   QinqEnabled: false
   NativeVlan: 1
 ---
@@ -413,12 +441,43 @@ Mappings: []
 ClassId: vnic.EthQosPolicy
 Name: {{prefix}}fi-worker-QOS-server
 Organization: {{organization}}
-
 ---
 ClassId: sol.Policy
 Name: {{prefix}}fi-worker-SOL
 Organization: {{organization}}
-
+#settings
+Enabled: {{Enabled}}
+---
+ClassId: ntp.Policy
+Name: {{prefix}}fi-worker-NTP
+Organization: {{organization}}
+#settings
+Enabled: {{EnableNTP}}
+NtpServers: {{NTPServer}}
+---
+ClassId: smtp.Policy
+Name: {{prefix}}fi-worker-SMTP
+Organization: {{organization}}
+#settings
+Enabled: {{EnableSMTP}}
+SmtpServer: {{SMTPServer}}
+SmtpPort: {{SMTPPort}}
+Sender: {{SMTPSender}}
+Receivers: [{{Email1}}]
+---
+ClassId: ssh.Policy
+Name: {{prefix}}fi-worker-SSH
+Organization: {{organization}}
+#settings
+Enabled: {{EnableSSH}}
+Port: {{SSHPort}}
+Timeout: {{SSHTimeout}}
+---
+ClassId: deviceconnector.Policy
+Name: {{prefix}}fi-worker-DeviceConnector
+Organization: {{organization}}
+#settings
+IntersightOnly: {{IntersightOnly}}
 ---
 ClassId: vnic.EthAdapterPolicy
 Name: {{prefix}}fi-worker-Linux

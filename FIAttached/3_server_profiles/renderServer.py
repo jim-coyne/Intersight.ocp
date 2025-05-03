@@ -10,25 +10,53 @@ profiles_template = env.get_template('4_server_profiles.j2')
 prefix = 'prefix.'
 organization = 'default'
 
-# VLAN settings
+device_connector_settings = {
+    'IntersightOnly': 'off'
+}
+
 vlan_settings = {
     'AllowedVlans': '"70"',
     'TrunkMode': 'TRUNK',
     'DefaultVLAN': '0'
 }
 
-# VMEDIA
 vmedia_settings = {
     'bootVMedia': False
 }
 
-# IPMI
 ipmi_settings = {
     'Enable': False,
     'TKVM': True
 }
 
-# UUID Pool context
+ntp_settings = {
+    'EnableNTP': True,
+    'NTPServer': ''
+}
+
+sol_settings = {
+    'Enabled': True
+}
+
+smtp_settings = {
+    'EnableSMTP': True,
+    'SMTPServer': 'mailcisco.com',
+    'SMTPPort': 25,
+    'SMTPSender': 'cimc@cisco.com',
+    'Email1': 'jicoyne@cisco.com'
+}
+
+ssh_settings = {
+    'EnableSSH': True,
+    'SSHPort': 22,
+    'SSHTimeout': 1800
+}
+
+kvm_settings = {
+    'EnableKVM': True,
+    'AllowTunneledKVM': True
+}
+
 uuid_pool_context = {
     'prefix': prefix,
     'organization': organization,
@@ -36,26 +64,35 @@ uuid_pool_context = {
     'uuid_block_size': 256
 }
 
-# Policies context
 policies_context = {
     'prefix': prefix,
     'organization': organization,
+    **device_connector_settings,
     **vlan_settings,
     **vmedia_settings,
-    **ipmi_settings
+    **ipmi_settings,
+    **ntp_settings,
+    **sol_settings,
+    **smtp_settings,
+    **ssh_settings,
+    **kvm_settings
 }
 
-# Server profile template context
 server_template_context = {
     'prefix': prefix,
     'organization': organization,
     'template_name': 'ExampleServerTemplate',
+    **device_connector_settings,
     **vlan_settings,
     **vmedia_settings,
-    **ipmi_settings
+    **ipmi_settings,
+    **ntp_settings,
+    **sol_settings,
+    **smtp_settings,
+    **ssh_settings,
+    **kvm_settings
 }
 
-# Server profiles context
 server_profiles_context = {
     'prefix': prefix,
     'organization': organization,
@@ -64,9 +101,15 @@ server_profiles_context = {
         {'name': 'Server01', 'uuid': '0000-000000100001'},
         {'name': 'Server02', 'uuid': '0000-000000100002'}
     ],
+    **device_connector_settings,
     **vlan_settings,
     **vmedia_settings,
-    **ipmi_settings
+    **ipmi_settings,
+    **ntp_settings,
+    **sol_settings,
+    **smtp_settings,
+    **ssh_settings,
+    **kvm_settings
 }
 
 with open('1_UUID_Pool.yaml', 'w') as f:
