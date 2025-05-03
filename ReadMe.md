@@ -74,6 +74,8 @@ cd 3_server_profiles/
 
 ```
 
+![terminal](./terminal.png)
+
 ![Policies](./policies.png)
 
 
