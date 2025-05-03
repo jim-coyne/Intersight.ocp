@@ -17,9 +17,9 @@ Organization: {{organization}}
 VlanSettings:
   ClassId: vnic.VlanSettings
   ObjectType: vnic.VlanSettings
-  AllowedVlans: "70"
-  DefaultVlan: 0
-  Mode: TRUNK
+  AllowedVlans: {{AllowedVlans}}
+  DefaultVlan: {{DefaultVLAN}}
+  Mode: {{TrunkMode}}
 ---
 ClassId: vnic.EthIf
 Name: Eth0
@@ -70,7 +70,7 @@ BootDevices:
   Name: M2
   Slot: MSTOR-RAID
 - ObjectType: boot.VirtualMedia
-  Enabled: false
+  Enabled: {{bootVMedia}}
   Name: CIMC-DVD
   Subtype: cimc-mapped-dvd
 ---
@@ -78,13 +78,13 @@ ClassId: ipmioverlan.Policy
 Name: {{prefix}}fi-control-IPMI
 Organization: {{organization}}
 #settings
-Enabled: false
+Enabled: {{Enable}}
 ---
 ClassId: kvm.Policy
 Name: {{prefix}}fi-control-TunneledKVM
 Organization: {{organization}}
 #settings
-TunneledKvmEnabled: true
+TunneledKvmEnabled: {{TKVM}}
 ---
 ClassId: bios.Policy
 Name: {{prefix}}fi-control-BIOS
@@ -328,7 +328,7 @@ ClassId: kvm.Policy
 Name: {{prefix}}fi-worker-TunneledKVM
 Organization: {{organization}}
 #settings
-TunneledKvmEnabled: true
+TunneledKvmEnabled: {{TKVM}}
 ---
 ClassId: bios.Policy
 Name: {{prefix}}fi-worker-BIOS
