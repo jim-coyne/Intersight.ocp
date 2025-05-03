@@ -18,9 +18,18 @@ https://www.cisco.com/c/en/us/products/collateral/servers-unified-computing/ucs-
 
 YOU MUST EDIT THE RENDER SCRIPT VARIABLES AND RENDER YAML FILES FOR YOUR ENVIRONMENT
 
-** Using isctl **
+```
 
-Run isctl configure to configure it to use your API key. Follow the prompts for your key ID and path to the key file.
+isctl configure                       
+intersight_api_key_id is currently '<yourAPIkey>'
+Enter new intersight_api_key_id or press Enter to keep existing: 
+intersight_secret_key is currently '<location>/<file>'
+Enter new key file name or press Enter to keep existing: 
+intersight_fqdn is currently 'us-east-1.intersight.com'
+Enter new Intersight FQDN or press Enter to keep existing: 
+INFO[0023] Writing config file  
+
+```
 
 StandAlone Servers:
 
