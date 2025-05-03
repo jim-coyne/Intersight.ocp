@@ -1,0 +1,36 @@
+ClassId: fabric.EthNetworkPolicy
+Name: {{prefix}}vlansA
+Organization: {{organization}}
+---
+ClassId: fabric.EthNetworkPolicy
+Name: {{prefix}}vlansB
+Organization: {{organization}}
+---
+ClassId: fabric.MulticastPolicy
+Name: {{prefix}}multicast
+Organization: {{organization}}
+QuerierIpAddress: ""
+QuerierIpAddressPeer: ""
+QuerierState: Disabled
+SnoopingState: Enabled
+SrcIpProxy: Enabled
+---
+ClassId: fabric.Vlan
+Name: {{prefix}}vlan{{vlan}}
+EthNetworkPolicy: MoRef[{{organization}}\{{prefix}}vlansA]
+MulticastPolicy: MoRef[{{organization}}\{{prefix}}multicast]
+VlanId: {{vlan}}
+AutoAllowOnUplinks: true
+IsNative: {{isNative}}
+PrimaryVlanId: 0
+SharingType: None
+---
+ClassId: fabric.Vlan
+Name: {{prefix}}vlan{{vlan}}
+EthNetworkPolicy: MoRef[{{organization}}\{{prefix}}vlansB]
+MulticastPolicy: MoRef[{{organization}}\{{prefix}}multicast]
+VlanId: {{vlan}}
+AutoAllowOnUplinks: true
+IsNative: {{isNative}}
+PrimaryVlanId: 0
+SharingType: None

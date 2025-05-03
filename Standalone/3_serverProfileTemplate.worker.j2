@@ -1,0 +1,18 @@
+ClassId: server.ProfileTemplate
+Name: {{prefix}}ocp-sa-worker
+Organization: {{organization}}
+Description: 'Automated Deployment'
+Type: instance
+PolicyBucket:
+  - MoRef:AdapterConfigPolicyRelationship[{{prefix}}sa-worker-enablePOandLLDP]
+  - MoRef:BiosPolicyRelationship[{{prefix}}sa-worker-ocp-bios]
+  - MoRef:BootPrecisionPolicyRelationship[{{prefix}}sa-worker-M.2-vMedia]
+  - MoRef:DeviceconnectorPolicyRelationship[{{prefix}}sa-worker-IntersightOnly]
+  - MoRef:IpmioverlanPolicyRelationship[{{prefix}}sa-worker-DisableIPMI]
+  - MoRef:KvmPolicyRelationship[{{prefix}}sa-worker-AllowTunneledKVM]
+  - MoRef:NtpPolicyRelationship[{{prefix}}sa-worker-US.pool.ntp.org-NewYork]
+  - MoRef:SmtpPolicyRelationship[{{prefix}}sa-worker-CiscoSMTP]
+  - MoRef:SolPolicyRelationship[{{prefix}}sa-worker-EnableSOL]
+  - MoRef:SshPolicyRelationship[{{prefix}}sa-worker-enableSSH]
+  - MoRef:StorageStoragePolicyRelationship[{{prefix}}sa-control-M.2_Raid1]
+  - MoRef:VnicLanConnectivityPolicyRelationship[{{prefix}}sa-worker-Dual-vNICs]

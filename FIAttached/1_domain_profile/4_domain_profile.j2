@@ -1,0 +1,27 @@
+ClassId: fabric.SwitchClusterProfile
+Name: {{prefix}}{{domain}}
+Organization: {{organization}}
+---
+ClassId: fabric.SwitchProfile
+Name: {{prefix}}{{domain}}A
+SwitchClusterProfile: MoRef[{{organization}}\{{prefix}}{{domain}}]
+PolicyBucket:
+  - MoRef:fabric.EthNetworkPolicy[{{organization}}\{{prefix}}vlanA]
+  - MoRef:fabric.PortPolicy[{{organization}}\{{prefix}}server-ports]
+  - MoRef:fabric.SystemQosPolicy[{{organization}}\{{prefix}}QoS]
+  - MoRef:networkconfig.Policy[{{organization}}\{{prefix}}dns]
+  - MoRef:ntp.Policy[{{organization}}\{{prefix}}ntp]
+  - MoRef:fabric.SwitchControlPolicy[{{organization}}\{{prefix}}switchControl]
+  - MoRef:snmp.Policy[{{organization}}\{{prefix}}snmp]
+---
+ClassId: fabric.SwitchProfile
+Name: {{prefix}}{{domain}}B
+SwitchClusterProfile: MoRef[{{organization}}\{{prefix}}{{domain}}]
+PolicyBucket:
+  - MoRef:fabric.EthNetworkPolicy[{{organization}}\{{prefix}}vlansB]
+  - MoRef:fabric.PortPolicy[{{organization}}\{{prefix}}server-ports]
+  - MoRef:fabric.SystemQosPolicy[{{organization}}\{{prefix}}QoS]
+  - MoRef:networkconfig.Policy[{{organization}}\{{prefix}}dns]
+  - MoRef:ntp.Policy[{{organization}}\{{prefix}}ntp]
+  - MoRef:fabric.SwitchControlPolicy[{{organization}}\{{prefix}}switchControl]
+  - MoRef:snmp.Policy[{{organization}}\{{prefix}}snmp]

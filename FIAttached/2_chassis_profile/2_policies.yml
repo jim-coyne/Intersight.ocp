@@ -1,6 +1,6 @@
 ClassId: access.Policy
-Name: AI-IMC
-Organization: default
+Name: {{prefix}}imcOutband
+Organization: {{organization}}
 #settings
 AddressType:
   ClassId: access.AddressType
@@ -8,16 +8,16 @@ AddressType:
   EnableIpV6: false
 ConfigurationType:
   ClassId: access.ConfigurationType
-  ConfigureInband: false
-  ConfigureOutOfBand: true
-InbandVlan: 70
-InbandIpPool: MoRef[default\AI-IMC-POOL]
-OutOfBandIpPool: MoRef[default\AI-IMC-POOL]
+  ConfigureInband: {{EnableIB}} # false
+  ConfigureOutOfBand: {{EnableOOB}} # true
+InbandVlan: {{InbandVLAN}} # 70 
+InbandIpPool: MoRef[{{organization}}\{{prefix}}imcPool]
+OutOfBandIpPool: MoRef[{{organization}}\{{prefix}}imcPool]
 
 ---
 ClassId: power.Policy
-Name: AI-Power
-Organization: default
+Name: {{prefix}}Power
+Organization: {{organization}}
 #settings
 AllocatedBudget: 0
 DynamicRebalancing: Enabled
@@ -29,7 +29,7 @@ PowerSaveMode: Enabled
 RedundancyMode: Grid
 ---
 ClassId: thermal.Policy
-Name: AI-Thermal
-Organization: default
+Name: {{prefix}}Thermal
+Organization: {{organization}}
 #settings
 FanControlMode: Balanced

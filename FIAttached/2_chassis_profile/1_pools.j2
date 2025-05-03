@@ -1,0 +1,53 @@
+ClassId: macpool.Pool
+Name: {{prefix}}macA
+Organization: {{organization}}
+#settings
+MacBlocks:
+- ClassId: macpool.Block
+  From: {{AmacFrom}} # 00:25:B5:AA:10:00
+  Size: {{AblockSize}} # 256
+---
+ClassId: macpool.Pool
+Name: {{prefix}}macB
+Organization: {{organization}}
+#settings
+MacBlocks:
+- ClassId: macpool.Block
+  From: {{BmacFrom}} # 00:25:B5:BB:10:00
+  Size: {{BblockSize}} # 256
+---
+ClassId: uuidpool.Pool
+Name: {{prefix}}uuid
+Organization: {{organization}}
+Prefix: 00000000-0010-0000
+UuidSuffixBlocks:
+- ClassId: uuidpool.UuidBlock
+  From: 0000-000000100001
+  Size: 256
+---
+ClassId: resourcepool.Pool
+Name: {{prefix}}ServerPool
+Organization: {{organization}}
+
+ResourcePoolParameters:
+  ClassId: resourcepool.ServerPoolParameters
+  ManagementMode: Intersight
+  ObjectType: resourcepool.ServerPoolParameters
+ResourceType: Server
+Selectors:
+#- ClassId: resource.Selector
+#  Selector: /api/v1/compute/Blades?$filter=(Serial in ('XXXXXXX','XXXXXXX','XXXXXXX','XXXXXXX'))
+---
+ ClassId: ippool.Pool
+ Name: {{prefix}}imcPool
+ Organization: {{organization}}   
+ IpV4Config:
+   ClassId: ippool.IpV4Config
+   Gateway: {{ippoolGateway}} # 172.20.70.1   
+   Netmask: {{ippoolNetmask}} # 255.255.255.0
+   PrimaryDns: {{ippoolPrimaryDns}} # 172.20.70.60
+   SecondaryDns: {{ippoolSecondaryDns}} # 172.20.70.59
+ IpV4Blocks:
+ - ClassId: ippool.IpV4Block
+   From: {{startAddr}} # 172.20.70.1
+   To: {{endAddr}} # 172.20.70.250

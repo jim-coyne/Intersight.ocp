@@ -1,6 +1,6 @@
 ---
 ClassId: storage.StoragePolicy
-Name: AI-fi-control-M.2
+Name: prefix.fi-control-M.2
 Organization: default
 #settings
 M2VirtualDrive:
@@ -11,7 +11,7 @@ M2VirtualDrive:
 UnusedDisksState: Jbod
 ---
 ClassId: vnic.EthNetworkPolicy
-Name: AI-fi-control-Trunk
+Name: prefix.fi-control-Trunk
 Organization: default
 #settings
 VlanSettings:
@@ -25,14 +25,14 @@ ClassId: vnic.EthIf
 Name: Eth0
 #settings
 FailoverEnabled: true
-EthAdapterPolicy: MoRef[default\AI-fi-control-Linux]
-EthNetworkPolicy: MoRef[default\AI-fi-control-Trunk]
-EthQosPolicy: MoRef[default\AI-fi-control-QOS-server]
-FabricEthNetworkControlPolicy: MoRef[default\AI-fi-control-LLDP]
+EthAdapterPolicy: MoRef[default\prefix.fi-control-Linux]
+EthNetworkPolicy: MoRef[default\prefix.fi-control-Trunk]
+EthQosPolicy: MoRef[default\prefix.fi-control-QOS-server]
+FabricEthNetworkControlPolicy: MoRef[default\prefix.fi-control-LLDP]
 FabricEthNetworkGroupPolicy: 
-  - MoRef[default\AI-fi-control-ALLOWED-VLANS]
-LanConnectivityPolicy: MoRef[default\AI-fi-control-LAN]
-MacPool: MoRef[default\AI-MAC-A]
+  - MoRef[default\prefix.fi-control-ALLOWED-VLANS]
+LanConnectivityPolicy: MoRef[default\prefix.fi-control-LAN]
+MacPool: MoRef[default\prefix.macA]
 MacAddressType: "POOL"
 Order: 0
 Placement:
@@ -44,14 +44,14 @@ ClassId: vnic.EthIf
 Name: Eth1
 #settings
 FailoverEnabled: true
-EthAdapterPolicy: MoRef[default\AI-fi-control-Linux]
-EthNetworkPolicy: MoRef[default\AI-fi-control-Trunk]
-EthQosPolicy: MoRef[default\AI-fi-control-QOS-server]
-FabricEthNetworkControlPolicy: MoRef[default\AI-fi-control-LLDP]
+EthAdapterPolicy: MoRef[default\prefix.fi-control-Linux]
+EthNetworkPolicy: MoRef[default\prefix.fi-control-Trunk]
+EthQosPolicy: MoRef[default\prefix.fi-control-QOS-server]
+FabricEthNetworkControlPolicy: MoRef[default\prefix.fi-control-LLDP]
 FabricEthNetworkGroupPolicy: 
-  - MoRef[default\AI-fi-control-ALLOWED-VLANS]
-LanConnectivityPolicy: MoRef[default\AI-fi-control-LAN]
-MacPool: MoRef[default\AI-MAC-B]
+  - MoRef[default\prefix.fi-control-ALLOWED-VLANS]
+LanConnectivityPolicy: MoRef[default\prefix.fi-control-LAN]
+MacPool: MoRef[default\prefix.macB]
 MacAddressType: "POOL"
 Order: 0
 Placement:
@@ -60,7 +60,7 @@ Placement:
   SwitchId: B
 ---
 ClassId: boot.PrecisionPolicy
-Name: AI-fi-control-Boot
+Name: prefix.fi-control-Boot
 Organization: default
 #settings
 BootDevices:
@@ -75,30 +75,30 @@ BootDevices:
   Subtype: cimc-mapped-dvd
 ---
 ClassId: ipmioverlan.Policy
-Name: AI-fi-control-IPMI-off
+Name: prefix.fi-control-IPMI
 Organization: default
 #settings
 Enabled: false
 ---
 ClassId: kvm.Policy
-Name: AI-fi-control-TunneledKVM
+Name: prefix.fi-control-TunneledKVM
 Organization: default
 #settings
 TunneledKvmEnabled: true
 ---
 ClassId: bios.Policy
-Name: AI-fi-control-BIOS
+Name: prefix.fi-control-BIOS
 Organization: default
-#settings are empty because the defaults suffice.
+
 ---
 ClassId: vnic.LanConnectivityPolicy
-Name: AI-fi-control-LAN
+Name: prefix.fi-control-LAN
 Organization: default
 #settings
 TargetPlatform: FIAttached
 ---
 ClassId: fabric.EthNetworkGroupPolicy
-Name: AI-fi-control-ALLOWED-VLANS
+Name: prefix.fi-control-ALLOWED-VLANS
 Organization: default
 VlanSettings:
   ClassId: fabric.VlanSettings
@@ -107,7 +107,7 @@ VlanSettings:
   NativeVlan: 1
 ---
 ClassId: fabric.EthNetworkControlPolicy
-Name: AI-fi-control-LLDP
+Name: prefix.fi-control-LLDP
 Organization: default 
 #settings
 CdpEnabled: true
@@ -121,7 +121,7 @@ UplinkFailAction: linkDown
 ---
 ClassId: iam.EndPointUserPolicy
 Organization: default
-Name: AI-fi-control-LocalAdmin
+Name: prefix.fi-control-LocalAdmin
 #settings
 PasswordProperties:
   ClassId: iam.EndPointPasswordProperties
@@ -143,11 +143,11 @@ Enabled: true
 EndPointRole: 
   - MoRef:iam.EndPointRole[$filter:Type eq 'IMC' and Name eq 'admin']
 EndPointUser: MoRef[default\admin]
-EndPointUserPolicy: MoRef[default\AI-fi-control-LocalAdmin]
+EndPointUserPolicy: MoRef[default\prefix.fi-control-LocalAdmin]
 Password: Cisco123
 ---
 ClassId: firmware.Policy
-Name: AI-fi-control-Firmware
+Name: prefix.fi-control-Firmware
 Organization: default
 #settings
 ModelBundleCombo:
@@ -158,7 +158,7 @@ ModelBundleCombo:
 TargetPlatform: FIAttached
 ---
 ClassId: vmedia.Policy
-Name: AI-fi-control-vMedia-Empty
+Name: prefix.fi-control-vMedia-Empty
 Organization: default
 #settings
 Enabled: true
@@ -167,17 +167,17 @@ LowPowerUsb: true
 Mappings: []
 ---
 ClassId: vnic.EthQosPolicy
-Name: AI-fi-control-QOS-server
+Name: prefix.fi-control-QOS-server
 Organization: default
-#settings are empty because the defaults suffice.
+
 ---
 ClassId: sol.Policy
-Name: AI-fi-control-SOL
+Name: prefix.fi-control-SOL
 Organization: default
-#settings are empty because the defaults suffice.
+
 ---
 ClassId: vnic.EthAdapterPolicy
-Name: AI-fi-control-Linux
+Name: prefix.fi-control-Linux
 Organization: default
 #settings
 AdvancedFilter: false
@@ -244,7 +244,7 @@ VxlanSettings:
 
 ---
 ClassId: storage.StoragePolicy
-Name: AI-fi-worker-M.2
+Name: prefix.fi-worker-M.2
 Organization: default
 #settings
 M2VirtualDrive:
@@ -255,7 +255,7 @@ M2VirtualDrive:
 UnusedDisksState: Jbod
 ---
 ClassId: vnic.EthNetworkPolicy
-Name: AI-fi-worker-Trunk
+Name: prefix.fi-worker-Trunk
 Organization: default
 #settings
 VlanSettings:
@@ -269,14 +269,14 @@ ClassId: vnic.EthIf
 Name: Eth0
 #settings
 FailoverEnabled: true
-EthAdapterPolicy: MoRef[default\AI-fi-worker-Linux]
-EthNetworkPolicy: MoRef[default\AI-fi-worker-Trunk]
-EthQosPolicy: MoRef[default\AI-fi-worker-QOS-server]
-FabricEthNetworkControlPolicy: MoRef[default\AI-fi-worker-LLDP]
+EthAdapterPolicy: MoRef[default\prefix.fi-worker-Linux]
+EthNetworkPolicy: MoRef[default\prefix.fi-worker-Trunk]
+EthQosPolicy: MoRef[default\prefix.fi-worker-QOS-server]
+FabricEthNetworkControlPolicy: MoRef[default\prefix.fi-worker-LLDP]
 FabricEthNetworkGroupPolicy: 
-  - MoRef[default\AI-fi-worker-ALLOWED-VLANS]
-LanConnectivityPolicy: MoRef[default\AI-fi-worker-LAN]
-MacPool: MoRef[default\AI-MAC-A]
+  - MoRef[default\prefix.fi-worker-ALLOWED-VLANS]
+LanConnectivityPolicy: MoRef[default\prefix.fi-worker-LAN]
+MacPool: MoRef[default\prefix.macA]
 MacAddressType: "POOL"
 Order: 0
 Placement:
@@ -288,14 +288,14 @@ ClassId: vnic.EthIf
 Name: Eth1
 #settings
 FailoverEnabled: true
-EthAdapterPolicy: MoRef[default\AI-fi-worker-Linux]
-EthNetworkPolicy: MoRef[default\AI-fi-worker-Trunk]
-EthQosPolicy: MoRef[default\AI-fi-worker-QOS-server]
-FabricEthNetworkControlPolicy: MoRef[default\AI-fi-worker-LLDP]
+EthAdapterPolicy: MoRef[default\prefix.fi-worker-Linux]
+EthNetworkPolicy: MoRef[default\prefix.fi-worker-Trunk]
+EthQosPolicy: MoRef[default\prefix.fi-worker-QOS-server]
+FabricEthNetworkControlPolicy: MoRef[default\prefix.fi-worker-LLDP]
 FabricEthNetworkGroupPolicy: 
-  - MoRef[default\AI-fi-worker-ALLOWED-VLANS]
-LanConnectivityPolicy: MoRef[default\AI-fi-worker-LAN]
-MacPool: MoRef[default\AI-MAC-B]
+  - MoRef[default\prefix.fi-worker-ALLOWED-VLANS]
+LanConnectivityPolicy: MoRef[default\prefix.fi-worker-LAN]
+MacPool: MoRef[default\prefix.macB]
 MacAddressType: "POOL"
 Order: 0
 Placement:
@@ -304,7 +304,7 @@ Placement:
   SwitchId: B
 ---
 ClassId: boot.PrecisionPolicy
-Name: AI-fi-worker-Boot
+Name: prefix.fi-worker-Boot
 Organization: default
 #settings
 BootDevices:
@@ -319,30 +319,30 @@ BootDevices:
   Subtype: cimc-mapped-dvd
 ---
 ClassId: ipmioverlan.Policy
-Name: AI-fi-worker-IPMI-off
+Name: prefix.fi-worker-IPMI
 Organization: default
 #settings
 Enabled: false
 ---
 ClassId: kvm.Policy
-Name: AI-fi-worker-TunneledKVM
+Name: prefix.fi-worker-TunneledKVM
 Organization: default
 #settings
 TunneledKvmEnabled: true
 ---
 ClassId: bios.Policy
-Name: AI-fi-worker-BIOS
+Name: prefix.fi-worker-BIOS
 Organization: default
-#settings are empty because the defaults suffice.
+
 ---
 ClassId: vnic.LanConnectivityPolicy
-Name: AI-fi-worker-LAN
+Name: prefix.fi-worker-LAN
 Organization: default
 #settings
 TargetPlatform: FIAttached
 ---
 ClassId: fabric.EthNetworkGroupPolicy
-Name: AI-fi-worker-ALLOWED-VLANS
+Name: prefix.fi-worker-ALLOWED-VLANS
 Organization: default
 VlanSettings:
   ClassId: fabric.VlanSettings
@@ -351,7 +351,7 @@ VlanSettings:
   NativeVlan: 1
 ---
 ClassId: fabric.EthNetworkControlPolicy
-Name: AI-fi-worker-LLDP
+Name: prefix.fi-worker-LLDP
 Organization: default 
 #settings
 CdpEnabled: true
@@ -365,7 +365,7 @@ UplinkFailAction: linkDown
 ---
 ClassId: iam.EndPointUserPolicy
 Organization: default
-Name: AI-fi-worker-LocalAdmin
+Name: prefix.fi-worker-LocalAdmin
 #settings
 PasswordProperties:
   ClassId: iam.EndPointPasswordProperties
@@ -387,11 +387,11 @@ Enabled: true
 EndPointRole: 
   - MoRef:iam.EndPointRole[$filter:Type eq 'IMC' and Name eq 'admin']
 EndPointUser: MoRef[default\admin]
-EndPointUserPolicy: MoRef[default\AI-fi-worker-LocalAdmin]
+EndPointUserPolicy: MoRef[default\prefix.fi-worker-LocalAdmin]
 Password: Cisco123
 ---
 ClassId: firmware.Policy
-Name: AI-fi-worker-Firmware
+Name: prefix.fi-worker-Firmware
 Organization: default
 #settings
 ModelBundleCombo:
@@ -402,7 +402,7 @@ ModelBundleCombo:
 TargetPlatform: FIAttached
 ---
 ClassId: vmedia.Policy
-Name: AI-fi-worker-vMedia-Empty
+Name: prefix.fi-worker-vMedia-Empty
 Organization: default
 #settings
 Enabled: true
@@ -411,17 +411,17 @@ LowPowerUsb: true
 Mappings: []
 ---
 ClassId: vnic.EthQosPolicy
-Name: AI-fi-worker-QOS-server
+Name: prefix.fi-worker-QOS-server
 Organization: default
-#settings are empty because the defaults suffice.
+
 ---
 ClassId: sol.Policy
-Name: AI-fi-worker-SOL
+Name: prefix.fi-worker-SOL
 Organization: default
-#settings are empty because the defaults suffice.
+
 ---
 ClassId: vnic.EthAdapterPolicy
-Name: AI-fi-worker-Linux
+Name: prefix.fi-worker-Linux
 Organization: default
 #settings
 AdvancedFilter: false

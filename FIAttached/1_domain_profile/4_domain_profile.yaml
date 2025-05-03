@@ -1,27 +1,27 @@
 ClassId: fabric.SwitchClusterProfile
-Name: AI-Domain
+Name: prefix.domain
 Organization: default
 ---
 ClassId: fabric.SwitchProfile
-Name: AI-Domain-A
-SwitchClusterProfile: MoRef[default\AI-Domain]
+Name: prefix.domainA
+SwitchClusterProfile: MoRef[default\prefix.domain]
 PolicyBucket:
-  - MoRef:fabric.EthNetworkPolicy[default\AI-VLANS-A]
-  - MoRef:fabric.PortPolicy[default\AI-6465-ports]
-  - MoRef:fabric.SystemQosPolicy[default\AI-QoS]
-  - MoRef:networkconfig.Policy[default\AI-DNS]
-  - MoRef:ntp.Policy[default\AI-NTP]
-  - MoRef:fabric.SwitchControlPolicy[default\AI-SwitchControl]
-  - MoRef:snmp.Policy[default\AI-SNMP]
+  - MoRef:fabric.EthNetworkPolicy[default\prefix.vlanA]
+  - MoRef:fabric.PortPolicy[default\prefix.server-ports]
+  - MoRef:fabric.SystemQosPolicy[default\prefix.QoS]
+  - MoRef:networkconfig.Policy[default\prefix.dns]
+  - MoRef:ntp.Policy[default\prefix.ntp]
+  - MoRef:fabric.SwitchControlPolicy[default\prefix.switchControl]
+  - MoRef:snmp.Policy[default\prefix.snmp]
 ---
 ClassId: fabric.SwitchProfile
-Name: AI-Domain-B
-SwitchClusterProfile: MoRef[default\AI-Domain]
+Name: prefix.domainB
+SwitchClusterProfile: MoRef[default\prefix.domain]
 PolicyBucket:
-  - MoRef:fabric.EthNetworkPolicy[default\AI-VLANS-B]
-  - MoRef:fabric.PortPolicy[default\AI-6465-ports]
-  - MoRef:fabric.SystemQosPolicy[default\AI-QoS]
-  - MoRef:networkconfig.Policy[default\AI-DNS]
-  - MoRef:ntp.Policy[default\AI-NTP]
-  - MoRef:fabric.SwitchControlPolicy[default\AI-SwitchControl]
-  - MoRef:snmp.Policy[default\AI-SNMP]
+  - MoRef:fabric.EthNetworkPolicy[default\prefix.vlansB]
+  - MoRef:fabric.PortPolicy[default\prefix.server-ports]
+  - MoRef:fabric.SystemQosPolicy[default\prefix.QoS]
+  - MoRef:networkconfig.Policy[default\prefix.dns]
+  - MoRef:ntp.Policy[default\prefix.ntp]
+  - MoRef:fabric.SwitchControlPolicy[default\prefix.switchControl]
+  - MoRef:snmp.Policy[default\prefix.snmp]

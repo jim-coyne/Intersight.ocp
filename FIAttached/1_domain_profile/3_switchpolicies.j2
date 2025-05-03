@@ -1,0 +1,52 @@
+---
+ClassId: ntp.Policy
+Name: {{prefix}}ntp
+Organization: {{organization}}
+Enabled: true
+NtpServers:
+- {{ntpserver1}} # 172.20.10.10
+Timezone: {{timezone}}  # America/New_York
+---
+ClassId: networkconfig.Policy
+Name: {{prefix}}dns
+Organization: {{organization}}
+PreferredIpv4dnsServer: {{dns1}} # 172.20.10.60
+AlternateIpv4dnsServer: {{dns2}} # 172.20.10.59
+---
+ClassId: fabric.SwitchControlPolicy
+Name: {{prefix}}switchControl
+Organization: {{organization}}
+#
+EthernetSwitchingMode: end-host
+FabricPcVhbaReset: Enabled
+FcSwitchingMode: end-host
+MacAgingSettings:
+  ClassId: fabric.MacAgingSettings
+  MacAgingOption: Default
+  MacAgingTime: 14500
+ReservedVlanStartId: 3915
+UdldSettings:
+  ClassId: fabric.UdldGlobalSettings
+  MessageInterval: 15
+  RecoveryAction: none
+VlanPortOptimizationEnabled: false
+---
+ClassId: snmp.Policy
+Name: {{prefix}}snmp
+Organization: {{organization}}
+CommunityAccess: {{snmp.CommunityAccess}} # Disabled
+AccessCommunityString: ""
+Enabled: true
+EngineId: ""
+SnmpPort: 161
+SnmpTraps: []
+SnmpUsers: []
+SysContact: ""
+SysLocation: ""
+TrapCommunity: ""
+V2Enabled: true
+V3Enabled: true
+---
+ClassId: fabric.SystemQosPolicy
+Organization: {{organization}}
+Name: {{prefix}}QoS

@@ -1,51 +1,51 @@
 ClassId: server.ProfileTemplate
-Name: AI-OCP-fi-control
+Name: prefix.ocp-fi-control
 Organization: default
 Description: Automanted Deployment
 #settings
 TargetPlatform: FIAttached
 UuidAddressType: POOL
-UuidPool: MoRef[default\AI-UUID]
+UuidPool: MoRef[default\prefix.uuid]
 Type: instance
 PolicyBucket:
-  - MoRef:bios.Policy[default\AI-fi-control-BIOS]
-  - MoRef:boot.PrecisionPolicy[default\AI-fi-control-Boot]
-  - MoRef:ipmioverlan.Policy[default\AI-fi-control-IPMI-off]
-  - MoRef:kvm.Policy[default\AI-fi-control-TunneledKVM]
-  - MoRef:sol.Policy[default\AI-fi-control-SOL]
-  - MoRef:storage.StoragePolicy[default\AI-fi-control-M.2]
-  - MoRef:vnic.LanConnectivityPolicy[default\AI-fi-control-LAN]
-  - MoRef:access.Policy[default\AI-IMC]
-  - MoRef:power.Policy[default\AI-Power]
-  - MoRef:firmware.Policy[default\AI-fi-control-Firmware]
-  - MoRef:thermal.Policy[default\AI-Thermal]
-  - MoRef:vmedia.Policy[default\AI-fi-control-vMedia-Empty]
-  - MoRef:iam.EndPointUserPolicy[default\AI-fi-control-LocalAdmin]
-  - MoRef:snmp.Policy[default\AI-SNMP]
+  - MoRef:bios.Policy[default\prefix.fi-control-BIOS]
+  - MoRef:boot.PrecisionPolicy[default\prefix.fi-control-Boot]
+  - MoRef:ipmioverlan.Policy[default\prefix.fi-control-IPMI]
+  - MoRef:kvm.Policy[default\prefix.fi-control-TunneledKVM]
+  - MoRef:sol.Policy[default\prefix.fi-control-SOL]
+  - MoRef:storage.StoragePolicy[default\prefix.fi-control-M.2]
+  - MoRef:vnic.LanConnectivityPolicy[default\prefix.fi-control-LAN]
+  - MoRef:access.Policy[default\prefix.imcOutband]
+  - MoRef:power.Policy[default\prefix.Power]
+  - MoRef:firmware.Policy[default\prefix.fi-control-Firmware]
+  - MoRef:thermal.Policy[default\prefix.Thermal]
+  - MoRef:vmedia.Policy[default\prefix.fi-control-vMedia-Empty]
+  - MoRef:iam.EndPointUserPolicy[default\prefix.fi-control-LocalAdmin]
+  - MoRef:snmp.Policy[default\prefix.snmp]
 
 ---
 
 ClassId: server.ProfileTemplate
-Name: AI-OCP-fi-worker
+Name: prefix.ocp-fi-worker
 Organization: default
 Description: Automanted Deployment
 #settings
 TargetPlatform: FIAttached
 UuidAddressType: POOL
-UuidPool: MoRef[default\AI-UUID]
+UuidPool: MoRef[default\prefix.uuid]
 Type: instance
 PolicyBucket:
-  - MoRef:bios.Policy[default\AI-fi-worker-BIOS]
-  - MoRef:boot.PrecisionPolicy[default\AI-fi-worker-Boot]
-  - MoRef:ipmioverlan.Policy[default\AI-fi-worker-IPMI-off]
-  - MoRef:kvm.Policy[default\AI-fi-worker-TunneledKVM]
-  - MoRef:sol.Policy[default\AI-fi-worker-SOL]
-  - MoRef:storage.StoragePolicy[default\AI-fi-worker-M.2]
-  - MoRef:vnic.LanConnectivityPolicy[default\AI-fi-worker-LAN]
-  - MoRef:access.Policy[default\AI-IMC]
-  - MoRef:power.Policy[default\AI-Power]
-  - MoRef:firmware.Policy[default\AI-fi-worker-Firmware]
-  - MoRef:thermal.Policy[default\AI-Thermal]
-  - MoRef:vmedia.Policy[default\AI-fi-worker-vMedia-Empty]
-  - MoRef:iam.EndPointUserPolicy[default\AI-fi-worker-LocalAdmin]
-  - MoRef:snmp.Policy[default\AI-SNMP]
+  - MoRef:bios.Policy[default\prefix.fi-worker-BIOS]
+  - MoRef:boot.PrecisionPolicy[default\prefix.fi-worker-Boot]
+  - MoRef:ipmioverlan.Policy[default\prefix.fi-worker-IPMI]
+  - MoRef:kvm.Policy[default\prefix.fi-worker-TunneledKVM]
+  - MoRef:sol.Policy[default\prefix.fi-worker-SOL]
+  - MoRef:storage.StoragePolicy[default\prefix.fi-worker-M.2]
+  - MoRef:vnic.LanConnectivityPolicy[default\prefix.fi-worker-LAN]
+  - MoRef:access.Policy[default\prefix.imcOutband]
+  - MoRef:power.Policy[default\prefix.Power]
+  - MoRef:firmware.Policy[default\prefix.fi-worker-Firmware]
+  - MoRef:thermal.Policy[default\prefix.Thermal]
+  - MoRef:vmedia.Policy[default\prefix.fi-worker-vMedia-Empty]
+  - MoRef:iam.EndPointUserPolicy[default\prefix.fi-worker-LocalAdmin]
+  - MoRef:snmp.Policy[default\prefix.snmp]

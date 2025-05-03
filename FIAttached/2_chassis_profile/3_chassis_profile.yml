@@ -1,9 +1,9 @@
 ClassId: chassis.Profile
-Name: AI-Domain-Chassis-01
-Organization: default
-#TargetPlatform: FIAttached
+Name: {{prefix}}{{domain}}Chassis{{chassisID}}
+Organization: {{organization}}
+# TargetPlatform: FIAttached
 PolicyBucket:
-  - MoRef:access.Policy[default\AI-IMC]
-  - MoRef:power.Policy[default\AI-Power]
-  - MoRef:snmp.Policy[default\AI-SNMP]
-  - MoRef:thermal.Policy[default\AI-Thermal]
+  - MoRef:access.Policy[{{organization}}\{{prefix}}imcOutband]
+  - MoRef:power.Policy[{{organization}}\{{prefix}}Power]
+  - MoRef:snmp.Policy[{{organization}}\{{prefix}}snmp]
+  - MoRef:thermal.Policy[{{organization}}\{{prefix}}Thermal]

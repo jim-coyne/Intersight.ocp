@@ -1,36 +1,18 @@
 ClassId: server.ProfileTemplate
-Name: AI-OCP-sa-worker
+Name: prefix.ocp-sa-worker
 Organization: default
 Description: 'Automated Deployment'
 Type: instance
 PolicyBucket:
-  - MoRef:AdapterConfigPolicyRelationship[AI-sa-worker-enablePOandLLDP]
-  - MoRef:BiosPolicyRelationship[AI-sa-worker-OCP-bios]
-  - MoRef:BootPrecisionPolicyRelationship[AI-sa-worker-M.2-vMedia]
-  - MoRef:DeviceconnectorPolicyRelationship[AI-sa-worker-IntersightOnly]
-  - MoRef:IpmioverlanPolicyRelationship[AI-sa-worker-DisableIPMI]
-  - MoRef:KvmPolicyRelationship[AI-sa-worker-AllowTunneledKVM]
-  - MoRef:NtpPolicyRelationship[AI-sa-worker-US.pool.ntp.org-NewYork]
-  - MoRef:SmtpPolicyRelationship[AI-sa-worker-CiscoSMTP]
-  - MoRef:SolPolicyRelationship[AI-sa-worker-EnableSOL]
-  - MoRef:SshPolicyRelationship[AI-sa-worker-enableSSH]
-  - MoRef:StorageStoragePolicyRelationship[AI-sa-control-M.2_Raid1]
-  - MoRef:VnicLanConnectivityPolicyRelationship[AI-sa-worker-Dual-vNICs]
-
-## PolicyBukcet for FIAttached
-
-#PolicyBucket:
-#  - MoRef:bios.Policy[LAB-RESOURCES\IMM-BIOS]
-#  - MoRef:boot.PrecisionPolicy[LAB-RESOURCES\IMM-Boot]
-#  - MoRef:ipmioverlan.Policy[LAB-RESOURCES\IMM-IPMI-off]
-#  - MoRef:kvm.Policy[LAB-RESOURCES\IMM-TunneledKVM]
-#  - MoRef:sol.Policy[LAB-RESOURCES\IMM-SOL]
-#  - MoRef:storage.StoragePolicy[LAB-RESOURCES\IMM-M.2]
-#  - MoRef:vnic.LanConnectivityPolicy[LAB-RESOURCES\IMM-LAN]
-#  - MoRef:access.Policy[LAB-RESOURCES\IMM-IMC-INBAND]
-#  - MoRef:power.Policy[LAB-RESOURCES\IMM-Power]
-#  - MoRef:firmware.Policy[LAB-RESOURCES\IMM-Firmware]
-#  - MoRef:thermal.Policy[LAB-RESOURCES\IMM-Thermal]
-#  - MoRef:vmedia.Policy[LAB-RESOURCES\IMM-vMedia-Empty]
-#  - MoRef:iam.EndPointUserPolicy[LAB-RESOURCES\IMM-LocalAdmin]
-#  - MoRef:snmp.Policy[LAB-RESOURCES\IMM-SNMP]
+  - MoRef:AdapterConfigPolicyRelationship[prefix.sa-worker-enablePOandLLDP]
+  - MoRef:BiosPolicyRelationship[prefix.sa-worker-ocp-bios]
+  - MoRef:BootPrecisionPolicyRelationship[prefix.sa-worker-M.2-vMedia]
+  - MoRef:DeviceconnectorPolicyRelationship[prefix.sa-worker-IntersightOnly]
+  - MoRef:IpmioverlanPolicyRelationship[prefix.sa-worker-DisableIPMI]
+  - MoRef:KvmPolicyRelationship[prefix.sa-worker-AllowTunneledKVM]
+  - MoRef:NtpPolicyRelationship[prefix.sa-worker-US.pool.ntp.org-NewYork]
+  - MoRef:SmtpPolicyRelationship[prefix.sa-worker-CiscoSMTP]
+  - MoRef:SolPolicyRelationship[prefix.sa-worker-EnableSOL]
+  - MoRef:SshPolicyRelationship[prefix.sa-worker-enableSSH]
+  - MoRef:StorageStoragePolicyRelationship[prefix.sa-control-M.2_Raid1]
+  - MoRef:VnicLanConnectivityPolicyRelationship[prefix.sa-worker-Dual-vNICs]

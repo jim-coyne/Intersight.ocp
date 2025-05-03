@@ -1,0 +1,9 @@
+ClassId: chassis.Profile
+Name: prefix.domain.Chassis01
+Organization: default
+# TargetPlatform: FIAttached
+PolicyBucket:
+  - MoRef:access.Policy[default\prefix.imcOutband]
+  - MoRef:power.Policy[default\prefix.Power]
+  - MoRef:snmp.Policy[default\prefix.snmp]
+  - MoRef:thermal.Policy[default\prefix.Thermal]

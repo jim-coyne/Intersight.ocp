@@ -9,7 +9,7 @@
 #  Size: 256
 ---
 ClassId: uuidpool.Pool
-Name: AI-UUID
+Name: prefix.uuid
 Organization: default
 Prefix: 00000000-0010-0000
 UuidSuffixBlocks:
@@ -18,7 +18,7 @@ UuidSuffixBlocks:
   Size: 256
 ---
 ClassId: resourcepool.Pool
-Name: AI-ServerPool
+Name: prefix.serverPool
 Organization: default
 
 ResourcePoolParameters:
@@ -27,6 +27,7 @@ ResourcePoolParameters:
   ObjectType: resourcepool.ServerPoolParameters
 ResourceType: Server
 Selectors:
+
 #- ClassId: resource.Selector
 #  Selector: /api/v1/compute/Blades?$filter=(Serial in ('XXXXXXX','XXXXXXX','XXXXXXX','XXXXXXX'))
 

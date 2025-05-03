@@ -1,0 +1,35 @@
+ClassId: access.Policy
+Name: prefix.imcOutband
+Organization: default
+#settings
+AddressType:
+  ClassId: access.AddressType
+  EnableIpV4: true
+  EnableIpV6: false
+ConfigurationType:
+  ClassId: access.ConfigurationType
+  ConfigureInband: False # false
+  ConfigureOutOfBand: True # true
+InbandVlan: 70 # 70 
+InbandIpPool: MoRef[default\prefix.imcPool]
+OutOfBandIpPool: MoRef[default\prefix.imcPool]
+
+---
+ClassId: power.Policy
+Name: prefix.Power
+Organization: default
+#settings
+AllocatedBudget: 0
+DynamicRebalancing: Enabled
+ExtendedPowerCapacity: Enabled
+PowerPriority: Low
+PowerProfiling: Enabled
+PowerRestoreState: AlwaysOff
+PowerSaveMode: Enabled
+RedundancyMode: Grid
+---
+ClassId: thermal.Policy
+Name: prefix.Thermal
+Organization: default
+#settings
+FanControlMode: Balanced

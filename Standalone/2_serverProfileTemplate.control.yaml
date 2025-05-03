@@ -1,18 +1,18 @@
 ClassId: server.ProfileTemplate
-Name: AI-OCP-sa-control
+Name: prefix.ocp-sa-control
 Organization: default
 Description: 'Automated Deployment'
 Type: instance
 PolicyBucket:
-  - MoRef:AdapterConfigPolicyRelationship[AI-sa-control-enablePOandLLDP]
-  - MoRef:BiosPolicyRelationship[AI-sa-control-OCP-bios]
-  - MoRef:BootPrecisionPolicyRelationship[AI-sa-control-M.2-vMedia]
-  - MoRef:DeviceconnectorPolicyRelationship[AI-sa-control-IntersightOnly]
-  - MoRef:IpmioverlanPolicyRelationship[AI-sa-control-DisableIPMI]
-  - MoRef:KvmPolicyRelationship[AI-sa-control-AllowTunneledKVM]
-  - MoRef:NtpPolicyRelationship[AI-sa-control-US.pool.ntp.org-NewYork]
-  - MoRef:SmtpPolicyRelationship[AI-sa-control-CiscoSMTP]
-  - MoRef:SolPolicyRelationship[AI-sa-control-EnableSOL]
-  - MoRef:SshPolicyRelationship[AI-sa-control-enableSSH]
-  - MoRef:StorageStoragePolicyRelationship[AI-sa-control-M.2_Raid1]
-  - MoRef:VnicLanConnectivityPolicyRelationship[AI-sa-control-Dual-vNICs]
+  - MoRef:AdapterConfigPolicyRelationship[prefix.sa-control-enablePOandLLDP]
+  - MoRef:BiosPolicyRelationship[prefix.sa-control-ocp-bios]
+  - MoRef:BootPrecisionPolicyRelationship[prefix.sa-control-M.2-vMedia]
+  - MoRef:DeviceconnectorPolicyRelationship[prefix.sa-control-IntersightOnly]
+  - MoRef:IpmioverlanPolicyRelationship[prefix.sa-control-DisableIPMI]
+  - MoRef:KvmPolicyRelationship[prefix.sa-control-AllowTunneledKVM]
+  - MoRef:NtpPolicyRelationship[prefix.sa-control-US.pool.ntp.org-NewYork]
+  - MoRef:SmtpPolicyRelationship[prefix.sa-control-CiscoSMTP]
+  - MoRef:SolPolicyRelationship[prefix.sa-control-EnableSOL]
+  - MoRef:SshPolicyRelationship[prefix.sa-control-enableSSH]
+  - MoRef:StorageStoragePolicyRelationship[prefix.sa-control-M.2_Raid1]
+  - MoRef:VnicLanConnectivityPolicyRelationship[prefix.sa-control-Dual-vNICs]

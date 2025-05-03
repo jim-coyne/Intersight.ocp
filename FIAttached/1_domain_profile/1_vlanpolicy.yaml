@@ -1,15 +1,14 @@
 ClassId: fabric.EthNetworkPolicy
-Name: AI-VLANS-A
+Name: prefix.vlansA
 Organization: default
 ---
 ClassId: fabric.EthNetworkPolicy
-Name: AI-VLANS-B
+Name: prefix.vlansB
 Organization: default
 ---
 ClassId: fabric.MulticastPolicy
-Name: AI-Multicast
+Name: prefix.multicast
 Organization: default
-#settings
 QuerierIpAddress: ""
 QuerierIpAddressPeer: ""
 QuerierState: Disabled
@@ -17,10 +16,9 @@ SnoopingState: Enabled
 SrcIpProxy: Enabled
 ---
 ClassId: fabric.Vlan
-Name: VLAN_70_A
-#settings
-EthNetworkPolicy: MoRef[default\AI-VLANS-A]
-MulticastPolicy: MoRef[default\AI-Multicast]
+Name: prefix.vlan70
+EthNetworkPolicy: MoRef[default\prefix.vlansA]
+MulticastPolicy: MoRef[default\prefix.multicast]
 VlanId: 70
 AutoAllowOnUplinks: true
 IsNative: false
@@ -28,10 +26,9 @@ PrimaryVlanId: 0
 SharingType: None
 ---
 ClassId: fabric.Vlan
-Name: VLAN_70_B
-#settings
-EthNetworkPolicy: MoRef[default\AI-VLANS-B]
-MulticastPolicy: MoRef[default\AI-Multicast]
+Name: prefix.vlan70
+EthNetworkPolicy: MoRef[default\prefix.vlansB]
+MulticastPolicy: MoRef[default\prefix.multicast]
 VlanId: 70
 AutoAllowOnUplinks: true
 IsNative: false

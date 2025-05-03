@@ -1,6 +1,6 @@
 ---
 ClassId: storage.StoragePolicy
-Name: AI-sa-control-M.2_Raid1
+Name: prefix.sa-control-M.2_Raid1
 Organization: default
 Description: automated deployment
 M2VirtualDrive:
@@ -11,14 +11,14 @@ M2VirtualDrive:
 UnusedDisksState: Jbod
 ---
 ClassId: adapter.ConfigPolicy
-Name: AI-sa-control-enablePOandLLDP
+Name: prefix.sa-control-enablePOandLLDP
 Organization: default
 Settings:
 - ClassId: adapter.AdapterConfig
   SlotId: MLOM
 ---
 ClassId: vnic.EthNetworkPolicy
-Name: AI-sa-control-TrunkMode
+Name: prefix.sa-control-TrunkMode
 Organization: default
 VlanSettings:
   ClassId: vnic.VlanSettings
@@ -28,11 +28,11 @@ VlanSettings:
   Mode: TRUNK
 ---
 ClassId: vnic.EthIf
-Name: AI-sa-control-eth0
+Name: prefix.sa-control-eth0
 EthAdapterPolicy: MoRef[Linux]
-EthNetworkPolicy: MoRef[AI-sa-control-TrunkMode]
-EthQosPolicy: MoRef[AI-sa-control-QOS-server]
-LanConnectivityPolicy: MoRef[AI-sa-control-Dual-vNICs]
+EthNetworkPolicy: MoRef[prefix.sa-control-TrunkMode]
+EthQosPolicy: MoRef[prefix.sa-control-QOS-server]
+LanConnectivityPolicy: MoRef[prefix.sa-control-Dual-vNICs]
 Order: 0
 Placement:
   ClassId: vnic.PlacementSettings
@@ -42,11 +42,11 @@ Placement:
   Uplink: 0
 ---
 ClassId: vnic.EthIf
-Name: AI-sa-control-eth1
+Name: prefix.sa-control-eth1
 EthAdapterPolicy: MoRef[Linux]
-EthNetworkPolicy: MoRef[AI-sa-control-TrunkMode]
-EthQosPolicy: MoRef[AI-sa-control-QOS-server]
-LanConnectivityPolicy: MoRef[AI-sa-control-Dual-vNICs]
+EthNetworkPolicy: MoRef[prefix.sa-control-TrunkMode]
+EthQosPolicy: MoRef[prefix.sa-control-QOS-server]
+LanConnectivityPolicy: MoRef[prefix.sa-control-Dual-vNICs]
 Order: 1
 Placement:
   ClassId: vnic.PlacementSettings
@@ -56,7 +56,7 @@ Placement:
   Uplink: 1
 ---
 ClassId: boot.PrecisionPolicy
-Name: AI-sa-control-M.2-vMedia
+Name: prefix.sa-control-M.2-vMedia
 Organization: default
 BootDevices:
 - Bootloader:
@@ -70,7 +70,7 @@ BootDevices:
   Subtype: cimc-mapped-dvd
 ---
 ClassId: ntp.Policy
-Name: AI-sa-control-US.pool.ntp.org-NewYork
+Name: prefix.sa-control-US.pool.ntp.org-NewYork
 Organization: default
 Enabled: true
 NtpServers:
@@ -78,7 +78,7 @@ NtpServers:
 Timezone: America/New_York
 ---
 ClassId: smtp.Policy
-Name: AI-sa-control-CiscoSMTP
+Name: prefix.sa-control-CiscoSMTP
 Organization: default
 Enabled: true
 MinSeverity: critical
@@ -88,22 +88,22 @@ SmtpRecipients:
 SmtpServer: mail.cisco.com
 ---
 ClassId: ipmioverlan.Policy
-Name: AI-sa-control-DisableIPMI
+Name: prefix.sa-control-DisableIPMI
 Organization: default
 Enabled: false
 ---
 ClassId: kvm.Policy
-Name: AI-sa-control-AllowTunneledKVM
+Name: prefix.sa-control-AllowTunneledKVM
 Organization: default
 TunneledKvmEnabled: true
 ---
 ClassId: deviceconnector.Policy
-Name: AI-sa-control-IntersightOnly
+Name: prefix.sa-control-IntersightOnly
 Organization: default
 LockoutEnabled: false
 ---
 ClassId: bios.Policy
-Name: AI-sa-control-OCP-bios
+Name: prefix.sa-control-ocp-bios
 Organization: default
 
 #Use the 'isctl get bios policy' command to obtain the policy options
@@ -137,12 +137,12 @@ Ipv6pxe: platform-default
 
 ---
 ClassId: vnic.LanConnectivityPolicy
-Name: AI-sa-control-Dual-vNICs
+Name: prefix.sa-control-Dual-vNICs
 Organization: default
 AzureQosEnabled: true
 ---
 ClassId: vnic.EthQosPolicy
-Name: AI-sa-control-QOS-server
+Name: prefix.sa-control-QOS-server
 Organization: default
 Mtu: 9000
 Burst: 10239
@@ -150,14 +150,14 @@ RateLimit: 0
 Cos: 3
 ---
 ClassId: sol.Policy
-Name: AI-sa-control-EnableSOL
+Name: prefix.sa-control-EnableSOL
 Organization: default
 Enabled: true
 BaudRate: 9600
 SshPort: 2400
 ---
 ClassId: ssh.Policy
-Name: AI-sa-control-enableSSH
+Name: prefix.sa-control-enableSSH
 Organization: default
 Enabled: true
 Port: 22
@@ -167,7 +167,7 @@ Timeout: 1800
 
 ---
 ClassId: storage.StoragePolicy
-Name: AI-sa-worker-M.2_Raid1
+Name: prefix.sa-worker-M.2_Raid1
 Organization: default
 Description: automated deployment
 M2VirtualDrive:
@@ -178,14 +178,14 @@ M2VirtualDrive:
 UnusedDisksState: Jbod
 ---
 ClassId: adapter.ConfigPolicy
-Name: AI-sa-worker-enablePOandLLDP
+Name: prefix.sa-worker-enablePOandLLDP
 Organization: default
 Settings:
 - ClassId: adapter.AdapterConfig
   SlotId: MLOM
 ---
 ClassId: vnic.EthNetworkPolicy
-Name: AI-sa-worker-TrunkMode
+Name: prefix.sa-worker-TrunkMode
 Organization: default
 VlanSettings:
   ClassId: vnic.VlanSettings
@@ -195,11 +195,11 @@ VlanSettings:
   Mode: TRUNK
 ---
 ClassId: vnic.EthIf
-Name: AI-sa-worker-eth0
+Name: prefix.sa-worker-eth0
 EthAdapterPolicy: MoRef[Linux]
-EthNetworkPolicy: MoRef[AI-sa-worker-TrunkMode]
-EthQosPolicy: MoRef[AI-sa-worker-QOS-server]
-LanConnectivityPolicy: MoRef[AI-sa-worker-Dual-vNICs]
+EthNetworkPolicy: MoRef[prefix.sa-worker-TrunkMode]
+EthQosPolicy: MoRef[prefix.sa-worker-QOS-server]
+LanConnectivityPolicy: MoRef[prefix.sa-worker-Dual-vNICs]
 Order: 0
 Placement:
   ClassId: vnic.PlacementSettings
@@ -209,11 +209,11 @@ Placement:
   Uplink: 0
 ---
 ClassId: vnic.EthIf
-Name: AI-sa-worker-eth1
+Name: prefix.sa-worker-eth1
 EthAdapterPolicy: MoRef[Linux]
-EthNetworkPolicy: MoRef[AI-sa-worker-TrunkMode]
-EthQosPolicy: MoRef[AI-sa-worker-QOS-server]Dashboards
-LanConnectivityPolicy: MoRef[AI-sa-worker-Dual-vNICs]
+EthNetworkPolicy: MoRef[prefix.sa-worker-TrunkMode]
+EthQosPolicy: MoRef[prefix.sa-worker-QOS-server]Dashboards
+LanConnectivityPolicy: MoRef[prefix.sa-worker-Dual-vNICs]
 Order: 1
 Placement:
   ClassId: vnic.PlacementSettings
@@ -223,7 +223,7 @@ Placement:
   Uplink: 1
 ---
 ClassId: boot.PrecisionPolicy
-Name: AI-sa-worker-M.2-vMedia
+Name: prefix.sa-worker-M.2-vMedia
 Organization: default
 BootDevices:
 - Bootloader:
@@ -237,7 +237,7 @@ BootDevices:
   Subtype: cimc-mapped-dvd
 ---
 ClassId: ntp.Policy
-Name: AI-sa-worker-US.pool.ntp.org-NewYork
+Name: prefix.sa-worker-US.pool.ntp.org-NewYork
 Organization: default
 Enabled: true
 NtpServers:
@@ -245,7 +245,7 @@ NtpServers:
 Timezone: America/New_York
 ---
 ClassId: smtp.Policy
-Name: AI-sa-worker-CiscoSMTP
+Name: prefix.sa-worker-CiscoSMTP
 Organization: default
 Enabled: true
 MinSeverity: critical
@@ -255,22 +255,22 @@ SmtpRecipients:
 SmtpServer: mail.cisco.com
 ---
 ClassId: ipmioverlan.Policy
-Name: AI-sa-worker-DisableIPMI
+Name: prefix.sa-worker-DisableIPMI
 Organization: default
 Enabled: false
 ---
 ClassId: kvm.Policy
-Name: AI-sa-worker-AllowTunneledKVM
+Name: prefix.sa-worker-AllowTunneledKVM
 Organization: default
 TunneledKvmEnabled: true
 ---
 ClassId: deviceconnector.Policy
-Name: AI-sa-worker-IntersightOnly
+Name: prefix.sa-worker-IntersightOnly
 Organization: default
 LockoutEnabled: false
 ---
 ClassId: bios.Policy
-Name: AI-sa-worker-OCP-bios
+Name: prefix.sa-worker-ocp-bios
 Organization: default
 
 #Use the 'isctl get bios policy' command to obtain the policy options
@@ -304,12 +304,12 @@ Ipv6pxe: platform-default
 
 ---
 ClassId: vnic.LanConnectivityPolicy
-Name: AI-sa-worker-Dual-vNICs
+Name: prefix.sa-worker-Dual-vNICs
 Organization: default
 AzureQosEnabled: true
 ---
 ClassId: vnic.EthQosPolicy
-Name: AI-sa-worker-QOS-server
+Name: prefix.sa-worker-QOS-server
 Organization: default
 Mtu: 9000
 Burst: 10239
@@ -317,14 +317,14 @@ RateLimit: 0
 Cos: 3
 ---
 ClassId: sol.Policy
-Name: AI-sa-worker-EnableSOL
+Name: prefix.sa-worker-EnableSOL
 Organization: default
 Enabled: true
 BaudRate: 9600
 SshPort: 2400
 ---
 ClassId: ssh.Policy
-Name: AI-sa-worker-enableSSH
+Name: prefix.sa-worker-enableSSH
 Organization: default
 Enabled: true
 Port: 22

@@ -1,24 +1,22 @@
 ---
 ClassId: ntp.Policy
-Name: AI-NTP
+Name: prefix.ntp
 Organization: default
-#settings
 Enabled: true
 NtpServers:
-- 172.20.10.10
-Timezone: America/New_York
+- 172.20.10.10 # 172.20.10.10
+Timezone: America/New_York  # America/New_York
 ---
 ClassId: networkconfig.Policy
-Name: AI-DNS
+Name: prefix.dns
 Organization: default
-#settings
-PreferredIpv4dnsServer: 172.20.10.60
-AlternateIpv4dnsServer: 172.20.10.59
+PreferredIpv4dnsServer: 172.20.10.60 # 172.20.10.60
+AlternateIpv4dnsServer: 172.20.10.59 # 172.20.10.59
 ---
 ClassId: fabric.SwitchControlPolicy
-Name: AI-SwitchControl
+Name: prefix.switchControl
 Organization: default
-#settings
+#
 EthernetSwitchingMode: end-host
 FabricPcVhbaReset: Enabled
 FcSwitchingMode: end-host
@@ -34,10 +32,9 @@ UdldSettings:
 VlanPortOptimizationEnabled: false
 ---
 ClassId: snmp.Policy
-Name: AI-SNMP
+Name: prefix.snmp
 Organization: default
-#settings
-CommunityAccess: Disabled
+CommunityAccess: Disabled # Disabled
 AccessCommunityString: ""
 Enabled: true
 EngineId: ""
@@ -52,4 +49,4 @@ V3Enabled: true
 ---
 ClassId: fabric.SystemQosPolicy
 Organization: default
-Name: AI-QoS
+Name: prefix.QoS

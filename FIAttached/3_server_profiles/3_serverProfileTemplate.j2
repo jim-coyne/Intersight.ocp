@@ -1,0 +1,51 @@
+ClassId: server.ProfileTemplate
+Name: {{prefix}}ocp-fi-control
+Organization: {{organization}}
+Description: Automanted Deployment
+#settings
+TargetPlatform: FIAttached
+UuidAddressType: POOL
+UuidPool: MoRef[{{organization}}\{{prefix}}uuid]
+Type: instance
+PolicyBucket:
+  - MoRef:bios.Policy[{{organization}}\{{prefix}}fi-control-BIOS]
+  - MoRef:boot.PrecisionPolicy[{{organization}}\{{prefix}}fi-control-Boot]
+  - MoRef:ipmioverlan.Policy[{{organization}}\{{prefix}}fi-control-IPMI]
+  - MoRef:kvm.Policy[{{organization}}\{{prefix}}fi-control-TunneledKVM]
+  - MoRef:sol.Policy[{{organization}}\{{prefix}}fi-control-SOL]
+  - MoRef:storage.StoragePolicy[{{organization}}\{{prefix}}fi-control-M.2]
+  - MoRef:vnic.LanConnectivityPolicy[{{organization}}\{{prefix}}fi-control-LAN]
+  - MoRef:access.Policy[{{organization}}\{{prefix}}imcOutband]
+  - MoRef:power.Policy[{{organization}}\{{prefix}}Power]
+  - MoRef:firmware.Policy[{{organization}}\{{prefix}}fi-control-Firmware]
+  - MoRef:thermal.Policy[{{organization}}\{{prefix}}Thermal]
+  - MoRef:vmedia.Policy[{{organization}}\{{prefix}}fi-control-vMedia-Empty]
+  - MoRef:iam.EndPointUserPolicy[{{organization}}\{{prefix}}fi-control-LocalAdmin]
+  - MoRef:snmp.Policy[{{organization}}\{{prefix}}snmp]
+
+---
+
+ClassId: server.ProfileTemplate
+Name: {{prefix}}ocp-fi-worker
+Organization: {{organization}}
+Description: Automanted Deployment
+#settings
+TargetPlatform: FIAttached
+UuidAddressType: POOL
+UuidPool: MoRef[{{organization}}\{{prefix}}uuid]
+Type: instance
+PolicyBucket:
+  - MoRef:bios.Policy[{{organization}}\{{prefix}}fi-worker-BIOS]
+  - MoRef:boot.PrecisionPolicy[{{organization}}\{{prefix}}fi-worker-Boot]
+  - MoRef:ipmioverlan.Policy[{{organization}}\{{prefix}}fi-worker-IPMI]
+  - MoRef:kvm.Policy[{{organization}}\{{prefix}}fi-worker-TunneledKVM]
+  - MoRef:sol.Policy[{{organization}}\{{prefix}}fi-worker-SOL]
+  - MoRef:storage.StoragePolicy[{{organization}}\{{prefix}}fi-worker-M.2]
+  - MoRef:vnic.LanConnectivityPolicy[{{organization}}\{{prefix}}fi-worker-LAN]
+  - MoRef:access.Policy[{{organization}}\{{prefix}}imcOutband]
+  - MoRef:power.Policy[{{organization}}\{{prefix}}Power]
+  - MoRef:firmware.Policy[{{organization}}\{{prefix}}fi-worker-Firmware]
+  - MoRef:thermal.Policy[{{organization}}\{{prefix}}Thermal]
+  - MoRef:vmedia.Policy[{{organization}}\{{prefix}}fi-worker-vMedia-Empty]
+  - MoRef:iam.EndPointUserPolicy[{{organization}}\{{prefix}}fi-worker-LocalAdmin]
+  - MoRef:snmp.Policy[{{organization}}\{{prefix}}snmp]

@@ -1,0 +1,39 @@
+ClassId: bulk.MoCloner
+Sources: 
+  - MoRef:server.ProfileTemplate[{{prefix}}ocp-fi-control]
+Targets:
+  - Name: {{prefix}}ocp.fi.control.node1
+    ObjectType: server.Profile
+    Organization: MoRef:organization.Organization[{{organization}}]
+#    ServerPool: MoRef:resourcepool.Pool[{{prefix}}imcPool]
+#    ServerAssignmentMode: pool
+  - Name: {{prefix}}ocp.fi.control.node2
+    ObjectType: server.Profile
+    Organization: MoRef:organization.Organization[{{organization}}]
+#    ServerPool: MoRef:resourcepool.Pool[{{prefix}}imcPool]
+#    ServerAssignmentMode: pool
+  - Name: {{prefix}}ocp.fi.control.node3
+    ObjectType: server.Profile
+    Organization: MoRef:organization.Organization[{{organization}}]
+#    ServerPool: MoRef:resourcepool.Pool[{{prefix}}imcPool]
+#    ServerAssignmentMode: pool
+
+# to delete derived profiles
+# isctl delete server profile name {{prefix}}SPname01
+# isctl delete server profile name {{prefix}}SPname02
+---
+
+ClassId: bulk.MoCloner
+Sources: 
+  - MoRef:server.ProfileTemplate[{{prefix}}ocp-fi-worker]
+Targets:
+  - Name: {{prefix}}ocp.fi.worker.node1
+    ObjectType: server.Profile
+    Organization: MoRef:organization.Organization[{{organization}}]
+#    ServerPool: MoRef:resourcepool.Pool[{{prefix}}IMC-POOL]
+#    ServerAssignmentMode: pool
+  - Name: {{prefix}}ocp.fi.worker.node2
+    ObjectType: server.Profile
+    Organization: MoRef:organization.Organization[{{organization}}]
+#    ServerPool: MoRef:resourcepool.Pool[{{prefix}}IMC-POOL]
+#    ServerAssignmentMode: pool

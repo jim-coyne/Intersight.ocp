@@ -1,23 +1,23 @@
 ClassId: macpool.Pool
-Name: AI-MAC-A
+Name: prefix.macA
 Organization: default
 #settings
 MacBlocks:
 - ClassId: macpool.Block
-  From: 00:25:B5:AA:10:00
-  Size: 256
+  From: 00:25:B5:AA:10:00 # 00:25:B5:AA:10:00
+  Size: 256 # 256
 ---
 ClassId: macpool.Pool
-Name: AI-MAC-B
+Name: prefix.macB
 Organization: default
 #settings
 MacBlocks:
 - ClassId: macpool.Block
-  From: 00:25:B5:BB:10:00
-  Size: 256
+  From: 00:25:B5:BB:10:00 # 00:25:B5:BB:10:00
+  Size: 256 # 256
 ---
 ClassId: uuidpool.Pool
-Name: AI-UUID
+Name: prefix.uuid
 Organization: default
 Prefix: 00000000-0010-0000
 UuidSuffixBlocks:
@@ -26,7 +26,7 @@ UuidSuffixBlocks:
   Size: 256
 ---
 ClassId: resourcepool.Pool
-Name: AI-ServerPool
+Name: prefix.ServerPool
 Organization: default
 
 ResourcePoolParameters:
@@ -39,15 +39,15 @@ Selectors:
 #  Selector: /api/v1/compute/Blades?$filter=(Serial in ('XXXXXXX','XXXXXXX','XXXXXXX','XXXXXXX'))
 ---
  ClassId: ippool.Pool
- Name: AI-IMC-POOL
+ Name: prefix.imcPool
  Organization: default   
  IpV4Config:
    ClassId: ippool.IpV4Config
-   Gateway: 172.20.70.1   
-   Netmask: 255.255.255.0
-   PrimaryDns: 172.20.70.60
-   SecondaryDns: 172.20.70.59
+   Gateway: 172.20.70.1 # 172.20.70.1   
+   Netmask: 255.255.255.0 # 255.255.255.0
+   PrimaryDns: 172.20.70.60 # 172.20.70.60
+   SecondaryDns: 172.20.70.59 # 172.20.70.59
  IpV4Blocks:
  - ClassId: ippool.IpV4Block
-   From: 172.20.70.1
-   To: 172.20.70.250
+   From: 172.20.70.1 # 172.20.70.1
+   To: 172.20.70.250 # 172.20.70.250
