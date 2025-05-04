@@ -25,8 +25,7 @@ vmedia_settings = {
 }
 
 ipmi_settings = {
-    'Enable': False,
-    'TKVM': True
+    'Enable': False
 }
 
 ntp_settings = {

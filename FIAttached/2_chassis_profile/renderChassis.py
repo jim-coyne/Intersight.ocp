@@ -10,14 +10,11 @@ prefix = 'prefix.'
 organization = 'default'
 domain = 'domain'
 chassisID = '01'
+EnableIB = False
+EnableOOB = True
+InbandVLAN = 70
 
-pools_context = {
-    'prefix': prefix,
-    'organization': organization,
-    'AmacFrom': '00:25:B5:AA:10:00',
-    'AblockSize': 256,
-    'BmacFrom': '00:25:B5:BB:10:00',
-    'BblockSize': 256,
+ippool_settings = {
     'ippoolGateway': '172.20.70.1',
     'ippoolNetmask': '255.255.255.0',
     'ippoolPrimaryDns': '172.20.70.60',
@@ -26,12 +23,26 @@ pools_context = {
     'endAddr': '172.20.70.250'
 }
 
+macPool_settings = {
+    'AmacFrom': '00:25:B5:AA:10:00',
+    'AblockSize': 256,
+    'BmacFrom': '00:25:B5:AA:10:00',
+    'BblockSize': 256
+}
+
+pools_context = {
+    'prefix': prefix,
+    'organization': organization,
+     **macPool_settings,
+     **ippool_settings
+}
+
 policies_context = {
     'prefix': prefix,
     'organization': organization,
-    'EnableIB': False,
-    'EnableOOB': True,
-    'InbandVLAN': 70
+    'EnableIB': EnableIB,
+    'EnableOOB': EnableOOB,
+    'InbandVLAN': InbandVLAN
 }
 
 chassis_context = {
