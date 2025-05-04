@@ -1,9 +1,0 @@
-ClassId: chassis.Profile
-Name: {{prefix}}{{domain}}Chassis{{chassisID}}
-Organization: {{organization}}
-# TargetPlatform: FIAttached
-PolicyBucket:
-  - MoRef:access.Policy[{{organization}}\{{prefix}}imcOutband]
-  - MoRef:power.Policy[{{organization}}\{{prefix}}Power]
-  - MoRef:snmp.Policy[{{organization}}\{{prefix}}snmp]
-  - MoRef:thermal.Policy[{{organization}}\{{prefix}}Thermal]
