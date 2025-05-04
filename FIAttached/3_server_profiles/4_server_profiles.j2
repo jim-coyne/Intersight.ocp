@@ -5,17 +5,17 @@ Targets:
   - Name: {{prefix}}ocp.fi.control.node1
     ObjectType: server.Profile
     Organization: MoRef:organization.Organization[{{organization}}]
-#    ServerPool: MoRef:resourcepool.Pool[{{prefix}}imcPool]
+#    ServerPool: MoRef:resourcepool.Pool[{{prefix}}serverPool]
 #    ServerAssignmentMode: pool
   - Name: {{prefix}}ocp.fi.control.node2
     ObjectType: server.Profile
     Organization: MoRef:organization.Organization[{{organization}}]
-#    ServerPool: MoRef:resourcepool.Pool[{{prefix}}imcPool]
+#    ServerPool: MoRef:resourcepool.Pool[{{prefix}}serverPool]
 #    ServerAssignmentMode: pool
   - Name: {{prefix}}ocp.fi.control.node3
     ObjectType: server.Profile
     Organization: MoRef:organization.Organization[{{organization}}]
-#    ServerPool: MoRef:resourcepool.Pool[{{prefix}}imcPool]
+#    ServerPool: MoRef:resourcepool.Pool[{{prefix}}serverPool]
 #    ServerAssignmentMode: pool
 
 # to delete derived profiles
@@ -30,10 +30,10 @@ Targets:
   - Name: {{prefix}}ocp.fi.worker.node1
     ObjectType: server.Profile
     Organization: MoRef:organization.Organization[{{organization}}]
-#    ServerPool: MoRef:resourcepool.Pool[{{prefix}}IMC-POOL]
+#    ServerPool: MoRef:resourcepool.Pool[{{prefix}}serverPool]
 #    ServerAssignmentMode: pool
   - Name: {{prefix}}ocp.fi.worker.node2
     ObjectType: server.Profile
     Organization: MoRef:organization.Organization[{{organization}}]
-#    ServerPool: MoRef:resourcepool.Pool[{{prefix}}IMC-POOL]
+#    ServerPool: MoRef:resourcepool.Pool[{{prefix}}serverPool]
 #    ServerAssignmentMode: pool

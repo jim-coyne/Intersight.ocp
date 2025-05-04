@@ -70,7 +70,7 @@ BootDevices:
   Name: M2
   Slot: MSTOR-RAID
 - ObjectType: boot.VirtualMedia
-  Enabled: false
+  Enabled: False
   Name: CIMC-DVD
   Subtype: cimc-mapped-dvd
 ---
@@ -78,18 +78,18 @@ ClassId: ipmioverlan.Policy
 Name: prefix.fi-control-IPMI
 Organization: default
 #settings
-Enabled: false
+Enabled: False
 ---
 ClassId: kvm.Policy
 Name: prefix.fi-control-TunneledKVM
 Organization: default
 #settings
-TunneledKvmEnabled: true
+TunneledKvmEnabled: True
+Enable: True
 ---
 ClassId: bios.Policy
 Name: prefix.fi-control-BIOS
 Organization: default
-
 ---
 ClassId: vnic.LanConnectivityPolicy
 Name: prefix.fi-control-LAN
@@ -158,7 +158,7 @@ ModelBundleCombo:
 TargetPlatform: FIAttached
 ---
 ClassId: vmedia.Policy
-Name: prefix.fi-control-vMedia-Empty
+Name: prefix.fi-control-vMedia
 Organization: default
 #settings
 Enabled: true
@@ -169,12 +169,43 @@ Mappings: []
 ClassId: vnic.EthQosPolicy
 Name: prefix.fi-control-QOS-server
 Organization: default
-
 ---
 ClassId: sol.Policy
 Name: prefix.fi-control-SOL
 Organization: default
-
+#settings
+Enabled: True
+---
+ClassId: ntp.Policy
+Name: prefix.fi-control-NTP
+Organization: default
+#settings
+Enabled: True
+NtpServers: 10.0.10.1
+---
+ClassId: smtp.Policy
+Name: prefix.fi-control-SMTP
+Organization: default
+#settings
+Enabled: True
+SmtpServer: mailcisco.com
+SmtpPort: 25
+Sender: cimc@cisco.com
+Receivers: [jicoyne@cisco.com]
+---
+ClassId: ssh.Policy
+Name: prefix.fi-control-SSH
+Organization: default
+#settings
+Enabled: True
+Port: 22
+Timeout: 1800
+---
+ClassId: deviceconnector.Policy
+Name: prefix.fi-control-DeviceConnector
+Organization: default
+#settings
+IntersightOnly: off
 ---
 ClassId: vnic.EthAdapterPolicy
 Name: prefix.fi-control-Linux
@@ -239,9 +270,6 @@ UplinkFailbackTimeout: 5
 VxlanSettings:
   ClassId: vnic.VxlanSettings
   Enabled: false
-
-##
-
 ---
 ClassId: storage.StoragePolicy
 Name: prefix.fi-worker-M.2
@@ -314,7 +342,7 @@ BootDevices:
   Name: M2
   Slot: MSTOR-RAID
 - ObjectType: boot.VirtualMedia
-  Enabled: false
+  Enabled: False
   Name: CIMC-DVD
   Subtype: cimc-mapped-dvd
 ---
@@ -322,18 +350,18 @@ ClassId: ipmioverlan.Policy
 Name: prefix.fi-worker-IPMI
 Organization: default
 #settings
-Enabled: false
+Enabled: False
 ---
 ClassId: kvm.Policy
 Name: prefix.fi-worker-TunneledKVM
 Organization: default
 #settings
-TunneledKvmEnabled: true
+TunneledKvmEnabled: True
+Enable: True
 ---
 ClassId: bios.Policy
 Name: prefix.fi-worker-BIOS
 Organization: default
-
 ---
 ClassId: vnic.LanConnectivityPolicy
 Name: prefix.fi-worker-LAN
@@ -402,7 +430,7 @@ ModelBundleCombo:
 TargetPlatform: FIAttached
 ---
 ClassId: vmedia.Policy
-Name: prefix.fi-worker-vMedia-Empty
+Name: prefix.fi-worker-vMedia
 Organization: default
 #settings
 Enabled: true
@@ -413,12 +441,43 @@ Mappings: []
 ClassId: vnic.EthQosPolicy
 Name: prefix.fi-worker-QOS-server
 Organization: default
-
 ---
 ClassId: sol.Policy
 Name: prefix.fi-worker-SOL
 Organization: default
-
+#settings
+Enabled: True
+---
+ClassId: ntp.Policy
+Name: prefix.fi-worker-NTP
+Organization: default
+#settings
+Enabled: True
+NtpServers: 10.0.10.1
+---
+ClassId: smtp.Policy
+Name: prefix.fi-worker-SMTP
+Organization: default
+#settings
+Enabled: True
+SmtpServer: mailcisco.com
+SmtpPort: 25
+Sender: cimc@cisco.com
+Receivers: [jicoyne@cisco.com]
+---
+ClassId: ssh.Policy
+Name: prefix.fi-worker-SSH
+Organization: default
+#settings
+Enabled: True
+Port: 22
+Timeout: 1800
+---
+ClassId: deviceconnector.Policy
+Name: prefix.fi-worker-DeviceConnector
+Organization: default
+#settings
+IntersightOnly: off
 ---
 ClassId: vnic.EthAdapterPolicy
 Name: prefix.fi-worker-Linux
