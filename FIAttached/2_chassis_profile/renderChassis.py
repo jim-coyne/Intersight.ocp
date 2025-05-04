@@ -10,9 +10,9 @@ prefix = 'prefix.'
 organization = 'default'
 domain = 'domain'
 chassisID = '01'
-EnableIB = False
-EnableOOB = True
-InbandVLAN = 70
+enableIB = False
+enableOOB = True
+inbandVLAN = 70
 
 ippool_settings = {
     'ippoolGateway': '172.20.70.1',
@@ -40,9 +40,9 @@ pools_context = {
 policies_context = {
     'prefix': prefix,
     'organization': organization,
-    'EnableIB': EnableIB,
-    'EnableOOB': EnableOOB,
-    'InbandVLAN': InbandVLAN
+    'EnableIB': enableIB,
+    'EnableOOB': enableOOB,
+    'InbandVLAN': inbandVLAN
 }
 
 chassis_context = {

@@ -13,7 +13,7 @@ Organization: default
 #settings
 MacBlocks:
 - ClassId: macpool.Block
-  From: 00:25:B5:BB:10:00 # 00:25:B5:BB:10:00
+  From: 00:25:B5:AA:10:00 # 00:25:B5:BB:10:00
   Size: 256 # 256
 ---
 ClassId: uuidpool.Pool
