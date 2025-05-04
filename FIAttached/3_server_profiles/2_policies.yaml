@@ -191,7 +191,10 @@ Name: prefix.fi-control-SMTP
 Organization: default
 #settings
 Enabled: true
-SmtpServer: mailcisco.com
+MinSeverity: critical
+SenderEmail: cimc@cisco.com
+SmtpRecipients: ["jicoyne@cisco.com"]
+SmtpServer: mail.cisco.com
 SmtpPort: 25
 ---
 ClassId: ssh.Policy
@@ -458,7 +461,10 @@ Name: prefix.fi-worker-SMTP
 Organization: default
 #settings
 Enabled: true
-SmtpServer: mailcisco.com
+MinSeverity: critical
+SenderEmail: cimc@cisco.com
+SmtpRecipients: ["jicoyne@cisco.com"]
+SmtpServer: mail.cisco.com
 SmtpPort: 25
 
 ---

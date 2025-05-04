@@ -191,6 +191,9 @@ Name: {{prefix}}fi-control-SMTP
 Organization: {{organization}}
 #settings
 Enabled: {{EnableSMTP}}
+MinSeverity: {{SMTPMinSeverity}}
+SenderEmail: {{SMTPSenderEmail}}
+SmtpRecipients: {{SMTPRecipients}}
 SmtpServer: {{SMTPServer}}
 SmtpPort: {{SMTPPort}}
 ---
@@ -206,65 +209,65 @@ ClassId: vnic.EthAdapterPolicy
 Name: {{prefix}}fi-control-Linux
 Organization: {{organization}}
 #settings
-AdvancedFilter: false
+AdvancedFilter: {{EthAdapterAdvancedFilter}}
 ArfsSettings:
   ClassId: vnic.ArfsSettings
-  Enabled: false
+  Enabled: {{EthAdapterArfsEnabled}}
 CompletionQueueSettings:
   ClassId: vnic.CompletionQueueSettings
-  Count: 2
-  RingSize: 1
-GeneveEnabled: false
-InterruptScaling: false
+  Count: {{EthAdapterCompletionQueueCount}}
+  RingSize: {{EthAdapterCompletionQueueRingSize}}
+GeneveEnabled: {{EthAdapterGeneveEnabled}}
+InterruptScaling: {{EthAdapterInterruptScaling}}
 InterruptSettings:
   ClassId: vnic.EthInterruptSettings
-  CoalescingTime: 125
-  CoalescingType: MIN
-  Count: 4
-  Mode: MSIx
+  CoalescingTime: {{EthAdapterInterruptCoalescingTime}}
+  CoalescingType: {{EthAdapterInterruptCoalescingType}}
+  Count: {{EthAdapterInterruptCount}}
+  Mode: {{EthAdapterInterruptMode}}
 NvgreSettings:
   ClassId: vnic.NvgreSettings
-  Enabled: false
+  Enabled: {{EthAdapterNvgreEnabled}}
 PtpSettings:
   ClassId: vnic.PtpSettings
-  Enabled: false
+  Enabled: {{EthAdapterPtpEnabled}}
 RoceSettings:
   ClassId: vnic.RoceSettings
-  ClassOfService: 5
-  Enabled: false
-  MemoryRegions: 0
-  QueuePairs: 0
-  ResourceGroups: 0
-  Version: 1
+  ClassOfService: {{EthAdapterRoceClassOfService}}
+  Enabled: {{EthAdapterRoceEnabled}}
+  MemoryRegions: {{EthAdapterRoceMemoryRegions}}
+  QueuePairs: {{EthAdapterRoceQueuePairs}}
+  ResourceGroups: {{EthAdapterRoceResourceGroups}}
+  Version: {{EthAdapterRoceVersion}}
 RssHashSettings:
   ClassId: vnic.RssHashSettings
-  Ipv4Hash: false
-  Ipv6ExtHash: false
-  Ipv6Hash: false
-  TcpIpv4Hash: false
-  TcpIpv6ExtHash: false
-  TcpIpv6Hash: false
-  UdpIpv4Hash: false
-  UdpIpv6Hash: false
-RssSettings: false
+  Ipv4Hash: {{EthAdapterRssIpv4Hash}}
+  Ipv6ExtHash: {{EthAdapterRssIpv6ExtHash}}
+  Ipv6Hash: {{EthAdapterRssIpv6Hash}}
+  TcpIpv4Hash: {{EthAdapterRssTcpIpv4Hash}}
+  TcpIpv6ExtHash: {{EthAdapterRssTcpIpv6ExtHash}}
+  TcpIpv6Hash: {{EthAdapterRssTcpIpv6Hash}}
+  UdpIpv4Hash: {{EthAdapterRssUdpIpv4Hash}}
+  UdpIpv6Hash: {{EthAdapterRssUdpIpv6Hash}}
+RssSettings: {{EthAdapterRssSettings}}
 RxQueueSettings:
   ClassId: vnic.EthRxQueueSettings
-  Count: 1
-  RingSize: 512
+  Count: {{EthAdapterRxQueueCount}}
+  RingSize: {{EthAdapterRxQueueRingSize}}
 TcpOffloadSettings:
   ClassId: vnic.TcpOffloadSettings
-  LargeReceive: true
-  LargeSend: true
-  RxChecksum: true
-  TxChecksum: true
+  LargeReceive: {{EthAdapterTcpLargeReceive}}
+  LargeSend: {{EthAdapterTcpLargeSend}}
+  RxChecksum: {{EthAdapterTcpRxChecksum}}
+  TxChecksum: {{EthAdapterTcpTxChecksum}}
 TxQueueSettings:
   ClassId: vnic.EthTxQueueSettings
-  Count: 1
-  RingSize: 256
-UplinkFailbackTimeout: 5
+  Count: {{EthAdapterTxQueueCount}}
+  RingSize: {{EthAdapterTxQueueRingSize}}
+UplinkFailbackTimeout: {{EthAdapterUplinkFailbackTimeout}}
 VxlanSettings:
   ClassId: vnic.VxlanSettings
-  Enabled: false
+  Enabled: {{EthAdapterVxlanEnabled}}
 ---
 ClassId: storage.StoragePolicy
 Name: {{prefix}}fi-worker-M.2
@@ -458,6 +461,9 @@ Name: {{prefix}}fi-worker-SMTP
 Organization: {{organization}}
 #settings
 Enabled: {{EnableSMTP}}
+MinSeverity: {{SMTPMinSeverity}}
+SenderEmail: {{SMTPSenderEmail}}
+SmtpRecipients: {{SMTPRecipients}}
 SmtpServer: {{SMTPServer}}
 SmtpPort: {{SMTPPort}}
 
@@ -474,62 +480,62 @@ ClassId: vnic.EthAdapterPolicy
 Name: {{prefix}}fi-worker-Linux
 Organization: {{organization}}
 #settings
-AdvancedFilter: false
+AdvancedFilter: {{EthAdapterAdvancedFilter}}
 ArfsSettings:
   ClassId: vnic.ArfsSettings
-  Enabled: false
+  Enabled: {{EthAdapterArfsEnabled}}
 CompletionQueueSettings:
   ClassId: vnic.CompletionQueueSettings
-  Count: 2
-  RingSize: 1
-GeneveEnabled: false
-InterruptScaling: false
+  Count: {{EthAdapterCompletionQueueCount}}
+  RingSize: {{EthAdapterCompletionQueueRingSize}}
+GeneveEnabled: {{EthAdapterGeneveEnabled}}
+InterruptScaling: {{EthAdapterInterruptScaling}}
 InterruptSettings:
   ClassId: vnic.EthInterruptSettings
-  CoalescingTime: 125
-  CoalescingType: MIN
-  Count: 4
-  Mode: MSIx
+  CoalescingTime: {{EthAdapterInterruptCoalescingTime}}
+  CoalescingType: {{EthAdapterInterruptCoalescingType}}
+  Count: {{EthAdapterInterruptCount}}
+  Mode: {{EthAdapterInterruptMode}}
 NvgreSettings:
   ClassId: vnic.NvgreSettings
-  Enabled: false
+  Enabled: {{EthAdapterNvgreEnabled}}
 PtpSettings:
   ClassId: vnic.PtpSettings
-  Enabled: false
+  Enabled: {{EthAdapterPtpEnabled}}
 RoceSettings:
   ClassId: vnic.RoceSettings
-  ClassOfService: 5
-  Enabled: false
-  MemoryRegions: 0
-  QueuePairs: 0
-  ResourceGroups: 0
-  Version: 1
+  ClassOfService: {{EthAdapterRoceClassOfService}}
+  Enabled: {{EthAdapterRoceEnabled}}
+  MemoryRegions: {{EthAdapterRoceMemoryRegions}}
+  QueuePairs: {{EthAdapterRoceQueuePairs}}
+  ResourceGroups: {{EthAdapterRoceResourceGroups}}
+  Version: {{EthAdapterRoceVersion}}
 RssHashSettings:
   ClassId: vnic.RssHashSettings
-  Ipv4Hash: false
-  Ipv6ExtHash: false
-  Ipv6Hash: false
-  TcpIpv4Hash: false
-  TcpIpv6ExtHash: false
-  TcpIpv6Hash: false
-  UdpIpv4Hash: false
-  UdpIpv6Hash: false
-RssSettings: false
+  Ipv4Hash: {{EthAdapterRssIpv4Hash}}
+  Ipv6ExtHash: {{EthAdapterRssIpv6ExtHash}}
+  Ipv6Hash: {{EthAdapterRssIpv6Hash}}
+  TcpIpv4Hash: {{EthAdapterRssTcpIpv4Hash}}
+  TcpIpv6ExtHash: {{EthAdapterRssTcpIpv6ExtHash}}
+  TcpIpv6Hash: {{EthAdapterRssTcpIpv6Hash}}
+  UdpIpv4Hash: {{EthAdapterRssUdpIpv4Hash}}
+  UdpIpv6Hash: {{EthAdapterRssUdpIpv6Hash}}
+RssSettings: {{EthAdapterRssSettings}}
 RxQueueSettings:
   ClassId: vnic.EthRxQueueSettings
-  Count: 1
-  RingSize: 512
+  Count: {{EthAdapterRxQueueCount}}
+  RingSize: {{EthAdapterRxQueueRingSize}}
 TcpOffloadSettings:
   ClassId: vnic.TcpOffloadSettings
-  LargeReceive: true
-  LargeSend: true
-  RxChecksum: true
-  TxChecksum: true
+  LargeReceive: {{EthAdapterTcpLargeReceive}}
+  LargeSend: {{EthAdapterTcpLargeSend}}
+  RxChecksum: {{EthAdapterTcpRxChecksum}}
+  TxChecksum: {{EthAdapterTcpTxChecksum}}
 TxQueueSettings:
   ClassId: vnic.EthTxQueueSettings
-  Count: 1
-  RingSize: 256
-UplinkFailbackTimeout: 5
+  Count: {{EthAdapterTxQueueCount}}
+  RingSize: {{EthAdapterTxQueueRingSize}}
+UplinkFailbackTimeout: {{EthAdapterUplinkFailbackTimeout}}
 VxlanSettings:
   ClassId: vnic.VxlanSettings
-  Enabled: false
+  Enabled: {{EthAdapterVxlanEnabled}}

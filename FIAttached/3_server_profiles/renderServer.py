@@ -16,6 +16,46 @@ vlan_settings = {
     'DefaultVLAN': '0'
 }
 
+eth_adapter_settings = {
+    'EthAdapterAdvancedFilter': 'false',
+    'EthAdapterArfsEnabled': 'false',
+    'EthAdapterCompletionQueueCount': 2,
+    'EthAdapterCompletionQueueRingSize': 1,
+    'EthAdapterGeneveEnabled': 'false',
+    'EthAdapterInterruptScaling': 'false',
+    'EthAdapterInterruptCoalescingTime': 125,
+    'EthAdapterInterruptCoalescingType': 'MIN',
+    'EthAdapterInterruptCount': 4,
+    'EthAdapterInterruptMode': 'MSIx',
+    'EthAdapterNvgreEnabled': 'false',
+    'EthAdapterPtpEnabled': 'false',
+    'EthAdapterRoceClassOfService': 5,
+    'EthAdapterRoceEnabled': 'false',
+    'EthAdapterRoceMemoryRegions': 0,
+    'EthAdapterRoceQueuePairs': 0,
+    'EthAdapterRoceResourceGroups': 0,
+    'EthAdapterRoceVersion': 1,
+    'EthAdapterRssIpv4Hash': 'false',
+    'EthAdapterRssIpv6ExtHash': 'false',
+    'EthAdapterRssIpv6Hash': 'false',
+    'EthAdapterRssTcpIpv4Hash': 'false',
+    'EthAdapterRssTcpIpv6ExtHash': 'false',
+    'EthAdapterRssTcpIpv6Hash': 'false',
+    'EthAdapterRssUdpIpv4Hash': 'false',
+    'EthAdapterRssUdpIpv6Hash': 'false',
+    'EthAdapterRssSettings': 'false',
+    'EthAdapterRxQueueCount': 1,
+    'EthAdapterRxQueueRingSize': 512,
+    'EthAdapterTcpLargeReceive': 'true',
+    'EthAdapterTcpLargeSend': 'true',
+    'EthAdapterTcpRxChecksum': 'true',
+    'EthAdapterTcpTxChecksum': 'true',
+    'EthAdapterTxQueueCount': 1,
+    'EthAdapterTxQueueRingSize': 256,
+    'EthAdapterUplinkFailbackTimeout': 5,
+    'EthAdapterVxlanEnabled': 'false'
+}
+
 vmedia_settings = {
     'vMediaEnabled': 'true',
     'vMediaEncryption': 'true',
@@ -39,8 +79,11 @@ sol_settings = {
 
 smtp_settings = {
     'EnableSMTP': 'true',
-    'SMTPServer': 'mailcisco.com',
-    'SMTPPort': 25,
+    'SMTPMinSeverity': 'critical',
+    'SMTPSenderEmail': 'cimc@cisco.com',
+    'SMTPRecipients': '["jicoyne@cisco.com"]',
+    'SMTPServer': 'mail.cisco.com',
+    'SMTPPort': 25
 }
 
 ssh_settings = {
@@ -101,7 +144,9 @@ policies_context = {
     **lldp_settings,
     **user_policy_settings,
     **firmware_settings,
-    **vmedia_settings
+    **vmedia_settings,
+    **smtp_settings,
+    **eth_adapter_settings
 }
 
 server_template_context = {
