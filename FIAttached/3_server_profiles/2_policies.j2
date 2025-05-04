@@ -109,14 +109,14 @@ ClassId: fabric.EthNetworkControlPolicy
 Name: {{prefix}}fi-control-LLDP
 Organization: {{organization}} 
 #settings
-CdpEnabled: true
-ForgeMac: allow
+CdpEnabled: {{CdpEnabled}}
+ForgeMac: {{ForgeMac}}
 LldpSettings:
   ClassId: fabric.LldpSettings
-  ReceiveEnabled: true
-  TransmitEnabled: true
-MacRegistrationMode: allVlans
-UplinkFailAction: linkDown
+  ReceiveEnabled: {{LldpReceiveEnabled}}
+  TransmitEnabled: {{LldpTransmitEnabled}}
+MacRegistrationMode: {{MacRegistrationMode}}
+UplinkFailAction: {{UplinkFailAction}}
 ---
 ClassId: iam.EndPointUserPolicy
 Organization: {{organization}}
@@ -376,14 +376,14 @@ ClassId: fabric.EthNetworkControlPolicy
 Name: {{prefix}}fi-worker-LLDP
 Organization: {{organization}} 
 #settings
-CdpEnabled: true
-ForgeMac: allow
+CdpEnabled: {{CdpEnabled}}
+ForgeMac: {{ForgeMac}}
 LldpSettings:
   ClassId: fabric.LldpSettings
-  ReceiveEnabled: true
-  TransmitEnabled: true
-MacRegistrationMode: allVlans
-UplinkFailAction: linkDown
+  ReceiveEnabled: {{LldpReceiveEnabled}}
+  TransmitEnabled: {{LldpTransmitEnabled}}
+MacRegistrationMode: {{MacRegistrationMode}}
+UplinkFailAction: {{UplinkFailAction}}
 ---
 ClassId: iam.EndPointUserPolicy
 Organization: {{organization}}

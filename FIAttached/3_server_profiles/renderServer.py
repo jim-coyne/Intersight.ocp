@@ -37,8 +37,6 @@ smtp_settings = {
     'EnableSMTP': 'true',
     'SMTPServer': 'mailcisco.com',
     'SMTPPort': 25,
-
-
 }
 
 ssh_settings = {
@@ -58,6 +56,15 @@ uuid_pool_context = {
     'uuid_block_size': 256
 }
 
+lldp_settings = {
+    'CdpEnabled': 'true',
+    'ForgeMac': 'allow',
+    'LldpReceiveEnabled': 'true',
+    'LldpTransmitEnabled': 'true',
+    'MacRegistrationMode': 'allVlans',
+    'UplinkFailAction': 'linkDown'
+}
+
 policies_context = {
     'prefix': prefix,
     'organization': organization,
@@ -68,7 +75,8 @@ policies_context = {
     **sol_settings,
     **smtp_settings,
     **ssh_settings,
-    **kvm_settings
+    **kvm_settings,
+    **lldp_settings
 }
 
 server_template_context = {
