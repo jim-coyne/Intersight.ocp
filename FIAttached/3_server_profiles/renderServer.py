@@ -17,24 +17,24 @@ vlan_settings = {
 }
 
 vmedia_settings = {
-    'bootVMedia': 'False'
+    'bootVMedia': 'false'
 }
 
 ipmi_settings = {
-    'Enable': 'False'
+    'Enable': 'false'
 }
 
 ntp_settings = {
-    'EnableNTP': 'True',
-    'NTPServer': '10.0.10.1'
+    'EnableNTP': 'true',
+    'NtpServers': ['1.1.1.1']
 }
 
 sol_settings = {
-    'Enabled': 'True'
+    'Enabled': 'true'
 }
 
 smtp_settings = {
-    'EnableSMTP': 'True',
+    'EnableSMTP': 'true',
     'SMTPServer': 'mailcisco.com',
     'SMTPPort': 25,
 
@@ -42,7 +42,7 @@ smtp_settings = {
 }
 
 ssh_settings = {
-    'EnableSSH': 'True',
+    'EnableSSH': 'true',
     'SSHPort': 22,
     'SSHTimeout': 1800
 }
@@ -61,7 +61,6 @@ uuid_pool_context = {
 policies_context = {
     'prefix': prefix,
     'organization': organization,
-    **device_connector_settings,
     **vlan_settings,
     **vmedia_settings,
     **ipmi_settings,

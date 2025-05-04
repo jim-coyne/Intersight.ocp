@@ -85,7 +85,6 @@ Name: {{prefix}}fi-control-TunneledKVM
 Organization: {{organization}}
 #settings
 TunneledKvmEnabled: {{AllowTunneledKVM}}
-Enable: {{EnableKVM}}
 ---
 ClassId: bios.Policy
 Name: {{prefix}}fi-control-BIOS
@@ -177,11 +176,15 @@ Organization: {{organization}}
 Enabled: {{Enabled}}
 ---
 ClassId: ntp.Policy
-Name: {{prefix}}fi-control-NTP
+ObjectType: ntp.Policy
+Name: {{prefix}}fi-worker-NTP
 Organization: {{organization}}
 #settings
 Enabled: {{EnableNTP}}
-NtpServers: {{NTPServer}}
+NtpServers: 
+  {% for server in NtpServers %}
+  - {{server}}
+  {% endfor %}
 ---
 ClassId: smtp.Policy
 Name: {{prefix}}fi-control-SMTP
@@ -198,12 +201,6 @@ Organization: {{organization}}
 Enabled: {{EnableSSH}}
 Port: {{SSHPort}}
 Timeout: {{SSHTimeout}}
----
-ClassId: deviceconnector.Policy
-Name: {{prefix}}fi-control-DeviceConnector
-Organization: {{organization}}
-#settings
-IntersightOnly: off
 ---
 ClassId: vnic.EthAdapterPolicy
 Name: {{prefix}}fi-control-Linux
@@ -446,11 +443,15 @@ Organization: {{organization}}
 Enabled: {{Enabled}}
 ---
 ClassId: ntp.Policy
-Name: {{prefix}}fi-worker-NTP
+ObjectType: ntp.Policy
+Name: {{prefix}}fi-control-NTP
 Organization: {{organization}}
 #settings
 Enabled: {{EnableNTP}}
-NtpServers: {{NTPServer}}
+NtpServers: 
+  {% for server in NtpServers %}
+  - {{server}}
+  {% endfor %}
 ---
 ClassId: smtp.Policy
 Name: {{prefix}}fi-worker-SMTP
@@ -468,12 +469,6 @@ Organization: {{organization}}
 Enabled: {{EnableSSH}}
 Port: {{SSHPort}}
 Timeout: {{SSHTimeout}}
----
-ClassId: deviceconnector.Policy
-Name: {{prefix}}fi-worker-DeviceConnector
-Organization: {{organization}}
-#settings
-IntersightOnly: off
 ---
 ClassId: vnic.EthAdapterPolicy
 Name: {{prefix}}fi-worker-Linux
