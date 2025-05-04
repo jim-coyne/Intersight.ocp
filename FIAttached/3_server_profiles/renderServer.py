@@ -85,8 +85,7 @@ server_template_context = {
 
 server_profiles_context = {
     'prefix': prefix,
-    'organization': organization,
-    'domain': 'domain'
+    'organization': organization
 }
 
 with open('1_UUID_Pool.yaml', 'w') as f:
