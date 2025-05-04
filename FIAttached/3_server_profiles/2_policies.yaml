@@ -110,14 +110,14 @@ ClassId: fabric.EthNetworkControlPolicy
 Name: prefix.fi-control-LLDP
 Organization: default 
 #settings
-CdpEnabled: true
+CdpEnabled: True
 ForgeMac: allow
 LldpSettings:
   ClassId: fabric.LldpSettings
-  ReceiveEnabled: true
-  TransmitEnabled: true
+  ReceiveEnabled: True
+  TransmitEnabled: True
 MacRegistrationMode: allVlans
-UplinkFailAction: linkDown
+UplinkFailAction: LinkDown
 ---
 ClassId: iam.EndPointUserPolicy
 Organization: default
@@ -125,9 +125,9 @@ Name: prefix.fi-control-LocalAdmin
 #settings
 PasswordProperties:
   ClassId: iam.EndPointPasswordProperties
-  EnablePasswordExpiry: false
-  EnforceStrongPassword: true
-  ForceSendPassword: false
+  EnablePasswordExpiry: False
+  EnforceStrongPassword: True
+  ForceSendPassword: False
   GracePeriod: 0
   NotificationPeriod: 15
   PasswordExpiryDuration: 90
@@ -139,7 +139,7 @@ Name: admin
 ---
 ClassId: iam.EndPointUserRole
 #settings
-Enabled: true
+Enabled: True
 EndPointRole: 
   - MoRef:iam.EndPointRole[$filter:Type eq 'IMC' and Name eq 'admin']
 EndPointUser: MoRef[default\admin]
@@ -153,7 +153,7 @@ Organization: default
 ModelBundleCombo:
 - BundleVersion: 5.2(0.230092)
   ClassId: firmware.ModelBundleVersion
-  ModelFamily: UCSX-210C-M6
+  ModelFamily: UCSX-210C-M7
   ObjectType: firmware.ModelBundleVersion
 TargetPlatform: FIAttached
 ---
@@ -161,9 +161,9 @@ ClassId: vmedia.Policy
 Name: prefix.fi-control-vMedia
 Organization: default
 #settings
-Enabled: true
-Encryption: true
-LowPowerUsb: true
+Enabled: True
+Encryption: True
+LowPowerUsb: True
 Mappings: []
 ---
 ClassId: vnic.EthQosPolicy
@@ -236,7 +236,7 @@ PtpSettings:
 RoceSettings:
   ClassId: vnic.RoceSettings
   ClassOfService: 5
-  Enabled: false
+  Enabled: 
   MemoryRegions: 0
   QueuePairs: 0
   ResourceGroups: 0
@@ -258,10 +258,10 @@ RxQueueSettings:
   RingSize: 512
 TcpOffloadSettings:
   ClassId: vnic.TcpOffloadSettings
-  LargeReceive: true
-  LargeSend: true
-  RxChecksum: true
-  TxChecksum: true
+  LargeReceive: True
+  LargeSend: True
+  RxChecksum: True
+  TxChecksum: True
 TxQueueSettings:
   ClassId: vnic.EthTxQueueSettings
   Count: 1
@@ -270,6 +270,9 @@ UplinkFailbackTimeout: 5
 VxlanSettings:
   ClassId: vnic.VxlanSettings
   Enabled: false
+
+#### Worker ####
+
 ---
 ClassId: storage.StoragePolicy
 Name: prefix.fi-worker-M.2
@@ -382,14 +385,14 @@ ClassId: fabric.EthNetworkControlPolicy
 Name: prefix.fi-worker-LLDP
 Organization: default 
 #settings
-CdpEnabled: true
+CdpEnabled: True
 ForgeMac: allow
 LldpSettings:
   ClassId: fabric.LldpSettings
-  ReceiveEnabled: true
-  TransmitEnabled: true
+  ReceiveEnabled: True
+  TransmitEnabled: True
 MacRegistrationMode: allVlans
-UplinkFailAction: linkDown
+UplinkFailAction: LinkDown
 ---
 ClassId: iam.EndPointUserPolicy
 Organization: default
@@ -397,13 +400,13 @@ Name: prefix.fi-worker-LocalAdmin
 #settings
 PasswordProperties:
   ClassId: iam.EndPointPasswordProperties
-  EnablePasswordExpiry: false
-  EnforceStrongPassword: true
-  ForceSendPassword: false
+  EnablePasswordExpiry: 
+  EnforceStrongPassword: 
+  ForceSendPassword: 
   GracePeriod: 0
   NotificationPeriod: 15
-  PasswordExpiryDuration: 90
-  PasswordHistory: 0
+  PasswordExpiryDuration: 
+  PasswordHistory: 
 ---
 ClassId: iam.EndPointUser
 Organization: default
@@ -411,7 +414,7 @@ Name: admin
 ---
 ClassId: iam.EndPointUserRole
 #settings
-Enabled: true
+Enabled: True
 EndPointRole: 
   - MoRef:iam.EndPointRole[$filter:Type eq 'IMC' and Name eq 'admin']
 EndPointUser: MoRef[default\admin]
@@ -425,7 +428,7 @@ Organization: default
 ModelBundleCombo:
 - BundleVersion: 5.2(0.230092)
   ClassId: firmware.ModelBundleVersion
-  ModelFamily: UCSX-210C-M6
+  ModelFamily: UCSX-210C-M7
   ObjectType: firmware.ModelBundleVersion
 TargetPlatform: FIAttached
 ---
@@ -433,9 +436,9 @@ ClassId: vmedia.Policy
 Name: prefix.fi-worker-vMedia
 Organization: default
 #settings
-Enabled: true
-Encryption: true
-LowPowerUsb: true
+Enabled: True
+Encryption: True
+LowPowerUsb: True
 Mappings: []
 ---
 ClassId: vnic.EthQosPolicy
@@ -508,7 +511,7 @@ PtpSettings:
 RoceSettings:
   ClassId: vnic.RoceSettings
   ClassOfService: 5
-  Enabled: false
+  Enabled: 
   MemoryRegions: 0
   QueuePairs: 0
   ResourceGroups: 0
@@ -530,10 +533,10 @@ RxQueueSettings:
   RingSize: 512
 TcpOffloadSettings:
   ClassId: vnic.TcpOffloadSettings
-  LargeReceive: true
-  LargeSend: true
-  RxChecksum: true
-  TxChecksum: true
+  LargeReceive: True
+  LargeSend: True
+  RxChecksum: True
+  TxChecksum: True
 TxQueueSettings:
   ClassId: vnic.EthTxQueueSettings
   Count: 1

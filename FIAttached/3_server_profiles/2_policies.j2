@@ -110,14 +110,14 @@ ClassId: fabric.EthNetworkControlPolicy
 Name: {{prefix}}fi-control-LLDP
 Organization: {{organization}} 
 #settings
-CdpEnabled: true
-ForgeMac: allow
+CdpEnabled: {{CdpEnabled}}
+ForgeMac: {{ForgeMac}}
 LldpSettings:
   ClassId: fabric.LldpSettings
-  ReceiveEnabled: true
-  TransmitEnabled: true
-MacRegistrationMode: allVlans
-UplinkFailAction: linkDown
+  ReceiveEnabled: {{ReceiveEnabled}}
+  TransmitEnabled: {{TransmitEnabled}}
+MacRegistrationMode: {{MacRegistrationMode}}
+UplinkFailAction: {{UplinkFailAction}}
 ---
 ClassId: iam.EndPointUserPolicy
 Organization: {{organization}}
@@ -125,13 +125,13 @@ Name: {{prefix}}fi-control-LocalAdmin
 #settings
 PasswordProperties:
   ClassId: iam.EndPointPasswordProperties
-  EnablePasswordExpiry: false
-  EnforceStrongPassword: true
-  ForceSendPassword: false
+  EnablePasswordExpiry: {{EnablePasswordExpiry}}
+  EnforceStrongPassword: {{EnforceStrongPassword}}
+  ForceSendPassword: {{ForceSendPassword}}
   GracePeriod: 0
   NotificationPeriod: 15
-  PasswordExpiryDuration: 90
-  PasswordHistory: 0
+  PasswordExpiryDuration: {{PasswordExpiryDuration}}
+  PasswordHistory: {{PasswordHistory}}
 ---
 ClassId: iam.EndPointUser
 Organization: {{organization}}
@@ -139,21 +139,21 @@ Name: admin
 ---
 ClassId: iam.EndPointUserRole
 #settings
-Enabled: true
+Enabled: {{iamEnable}}
 EndPointRole: 
   - MoRef:iam.EndPointRole[$filter:Type eq 'IMC' and Name eq 'admin']
 EndPointUser: MoRef[{{organization}}\admin]
 EndPointUserPolicy: MoRef[{{organization}}\{{prefix}}fi-control-LocalAdmin]
-Password: Cisco123
+Password: {{Password}}
 ---
 ClassId: firmware.Policy
 Name: {{prefix}}fi-control-Firmware
 Organization: {{organization}}
 #settings
 ModelBundleCombo:
-- BundleVersion: 5.2(0.230092)
+- BundleVersion: {{BundleVersion}}
   ClassId: firmware.ModelBundleVersion
-  ModelFamily: UCSX-210C-M6
+  ModelFamily: {{ModelFamily}}
   ObjectType: firmware.ModelBundleVersion
 TargetPlatform: FIAttached
 ---
@@ -161,10 +161,10 @@ ClassId: vmedia.Policy
 Name: {{prefix}}fi-control-vMedia
 Organization: {{organization}}
 #settings
-Enabled: true
-Encryption: true
-LowPowerUsb: true
-Mappings: []
+Enabled: {{vmediaEnable}}
+Encryption: {{vmediaEncrypt}}
+LowPowerUsb: {{LowPowerUsb}}
+Mappings: {{Mappings}}
 ---
 ClassId: vnic.EthQosPolicy
 Name: {{prefix}}fi-control-QOS-server
@@ -174,7 +174,7 @@ ClassId: sol.Policy
 Name: {{prefix}}fi-control-SOL
 Organization: {{organization}}
 #settings
-Enabled: {{Enabled}}
+Enabled: {{solEnabled}}
 ---
 ClassId: ntp.Policy
 Name: {{prefix}}fi-control-NTP
@@ -235,12 +235,12 @@ PtpSettings:
   Enabled: false
 RoceSettings:
   ClassId: vnic.RoceSettings
-  ClassOfService: 5
-  Enabled: false
+  ClassOfService: {{ClassOfService}}
+  Enabled: {{rcoeEnable}}
   MemoryRegions: 0
-  QueuePairs: 0
-  ResourceGroups: 0
-  Version: 1
+  QueuePairs: {{QueuePairs}}
+  ResourceGroups: {{ResourceGroups}}
+  Version: {{Version}}
 RssHashSettings:
   ClassId: vnic.RssHashSettings
   Ipv4Hash: false
@@ -258,10 +258,10 @@ RxQueueSettings:
   RingSize: 512
 TcpOffloadSettings:
   ClassId: vnic.TcpOffloadSettings
-  LargeReceive: true
-  LargeSend: true
-  RxChecksum: true
-  TxChecksum: true
+  LargeReceive: {{LargeReceive}}
+  LargeSend: {{LargeSend}}
+  RxChecksum: {{RxChecksum}}
+  TxChecksum: {{TxChecksum}}
 TxQueueSettings:
   ClassId: vnic.EthTxQueueSettings
   Count: 1
@@ -270,6 +270,9 @@ UplinkFailbackTimeout: 5
 VxlanSettings:
   ClassId: vnic.VxlanSettings
   Enabled: false
+
+#### Worker ####
+
 ---
 ClassId: storage.StoragePolicy
 Name: {{prefix}}fi-worker-M.2
@@ -289,9 +292,9 @@ Organization: {{organization}}
 VlanSettings:
   ClassId: vnic.VlanSettings
   ObjectType: vnic.VlanSettings
-  AllowedVlans: {{AllowedVlans}}
-  DefaultVlan: {{DefaultVLAN}}
-  Mode: {{TrunkMode}}
+  AllowedVlans: {{workerAllowedVlans}}
+  DefaultVlan: {{workerDefaultVLAN}}
+  Mode: {{workerTrunkMode}}
 ---
 ClassId: vnic.EthIf
 Name: Eth0
@@ -356,8 +359,8 @@ ClassId: kvm.Policy
 Name: {{prefix}}fi-worker-TunneledKVM
 Organization: {{organization}}
 #settings
-TunneledKvmEnabled: {{AllowTunneledKVM}}
-Enable: {{EnableKVM}}
+TunneledKvmEnabled: {{workerAllowTunneledKVM}}
+Enable: {{workerEnableKVM}}
 ---
 ClassId: bios.Policy
 Name: {{prefix}}fi-worker-BIOS
@@ -374,7 +377,7 @@ Name: {{prefix}}fi-worker-ALLOWED-VLANS
 Organization: {{organization}}
 VlanSettings:
   ClassId: fabric.VlanSettings
-  AllowedVlans: {{AllowedVlans}}
+  AllowedVlans: {{workerAllowedVlans}}
   QinqEnabled: false
   NativeVlan: 1
 ---
@@ -382,14 +385,14 @@ ClassId: fabric.EthNetworkControlPolicy
 Name: {{prefix}}fi-worker-LLDP
 Organization: {{organization}} 
 #settings
-CdpEnabled: true
-ForgeMac: allow
+CdpEnabled: {{workerCdpEnabled}}
+ForgeMac: {{workerForgeMac}}
 LldpSettings:
   ClassId: fabric.LldpSettings
-  ReceiveEnabled: true
-  TransmitEnabled: true
-MacRegistrationMode: allVlans
-UplinkFailAction: linkDown
+  ReceiveEnabled: {{workerReceiveEnabled}}
+  TransmitEnabled: {{workerTransmitEnabled}}
+MacRegistrationMode: {{workerMacRegistrationMode}}
+UplinkFailAction: {{workerUplinkFailAction}}
 ---
 ClassId: iam.EndPointUserPolicy
 Organization: {{organization}}
@@ -397,13 +400,13 @@ Name: {{prefix}}fi-worker-LocalAdmin
 #settings
 PasswordProperties:
   ClassId: iam.EndPointPasswordProperties
-  EnablePasswordExpiry: false
-  EnforceStrongPassword: true
-  ForceSendPassword: false
+  EnablePasswordExpiry: {{workerEnablePasswordExpiry}}
+  EnforceStrongPassword: {{workerEnforceStrongPassword}}
+  ForceSendPassword: {{workerForceSendPassword}}
   GracePeriod: 0
   NotificationPeriod: 15
-  PasswordExpiryDuration: 90
-  PasswordHistory: 0
+  PasswordExpiryDuration: {{workerPasswordExpiryDuration}}
+  PasswordHistory: {{workerPasswordHistory}}
 ---
 ClassId: iam.EndPointUser
 Organization: {{organization}}
@@ -411,21 +414,21 @@ Name: admin
 ---
 ClassId: iam.EndPointUserRole
 #settings
-Enabled: true
+Enabled: {{workeriamEnable}}
 EndPointRole: 
   - MoRef:iam.EndPointRole[$filter:Type eq 'IMC' and Name eq 'admin']
 EndPointUser: MoRef[{{organization}}\admin]
 EndPointUserPolicy: MoRef[{{organization}}\{{prefix}}fi-worker-LocalAdmin]
-Password: Cisco123
+Password: {{workerPassword}}
 ---
 ClassId: firmware.Policy
 Name: {{prefix}}fi-worker-Firmware
 Organization: {{organization}}
 #settings
 ModelBundleCombo:
-- BundleVersion: 5.2(0.230092)
+- BundleVersion: {{workerBundleVersion}}
   ClassId: firmware.ModelBundleVersion
-  ModelFamily: UCSX-210C-M6
+  ModelFamily: {{workerModelFamily}}
   ObjectType: firmware.ModelBundleVersion
 TargetPlatform: FIAttached
 ---
@@ -433,10 +436,10 @@ ClassId: vmedia.Policy
 Name: {{prefix}}fi-worker-vMedia
 Organization: {{organization}}
 #settings
-Enabled: true
-Encryption: true
-LowPowerUsb: true
-Mappings: []
+Enabled: {{workervmediaEnable}}
+Encryption: {{workervmediaEncrypt}}
+LowPowerUsb: {{workerLowPowerUsb}}
+Mappings: {{workerMappings}}
 ---
 ClassId: vnic.EthQosPolicy
 Name: {{prefix}}fi-worker-QOS-server
@@ -446,7 +449,7 @@ ClassId: sol.Policy
 Name: {{prefix}}fi-worker-SOL
 Organization: {{organization}}
 #settings
-Enabled: {{Enabled}}
+Enabled: {{workersolEnabled}}
 ---
 ClassId: ntp.Policy
 Name: {{prefix}}fi-worker-NTP
@@ -469,9 +472,9 @@ ClassId: ssh.Policy
 Name: {{prefix}}fi-worker-SSH
 Organization: {{organization}}
 #settings
-Enabled: {{EnableSSH}}
-Port: {{SSHPort}}
-Timeout: {{SSHTimeout}}
+Enabled: {{workerEnableSSH}}
+Port: {{workerSSHPort}}
+Timeout: {{workerSSHTimeout}}
 ---
 ClassId: deviceconnector.Policy
 Name: {{prefix}}fi-worker-DeviceConnector
@@ -507,12 +510,12 @@ PtpSettings:
   Enabled: false
 RoceSettings:
   ClassId: vnic.RoceSettings
-  ClassOfService: 5
-  Enabled: false
+  ClassOfService: {{workerClassOfService}}
+  Enabled: {{workerrcoeEnable}}
   MemoryRegions: 0
-  QueuePairs: 0
-  ResourceGroups: 0
-  Version: 1
+  QueuePairs: {{workerQueuePairs}}
+  ResourceGroups: {{workerResourceGroups}}
+  Version: {{workerVersion}}
 RssHashSettings:
   ClassId: vnic.RssHashSettings
   Ipv4Hash: false
@@ -530,10 +533,10 @@ RxQueueSettings:
   RingSize: 512
 TcpOffloadSettings:
   ClassId: vnic.TcpOffloadSettings
-  LargeReceive: true
-  LargeSend: true
-  RxChecksum: true
-  TxChecksum: true
+  LargeReceive: {{workerLargeReceive}}
+  LargeSend: {{workerLargeSend}}
+  RxChecksum: {{workerRxChecksum}}
+  TxChecksum: {{workerTxChecksum}}
 TxQueueSettings:
   ClassId: vnic.EthTxQueueSettings
   Count: 1
