@@ -40,9 +40,9 @@ pools_context = {
 policies_context = {
     'prefix': prefix,
     'organization': organization,
-    'EnableIB': enableIB,
-    'EnableOOB': enableOOB,
-    'InbandVLAN': inbandVLAN
+    'enableIB': enableIB,
+    'enableOOB': enableOOB,
+    'inbandVLAN': inbandVLAN
 }
 
 chassis_context = {

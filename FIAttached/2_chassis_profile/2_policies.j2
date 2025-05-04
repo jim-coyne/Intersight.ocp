@@ -8,9 +8,9 @@ AddressType:
   EnableIpV6: false
 ConfigurationType:
   ClassId: access.ConfigurationType
-  ConfigureInband: {{EnableIB}} # false
-  ConfigureOutOfBand: {{EnableOOB}} # true
-InbandVlan: {{InbandVLAN}} # 70 
+  ConfigureInband: {{enableIB}} # false
+  ConfigureOutOfBand: {{enableOOB}} # true
+InbandVlan: {{inbandVLAN}} # 70 
 InbandIpPool: MoRef[{{organization}}\{{prefix}}imcPool]
 OutOfBandIpPool: MoRef[{{organization}}\{{prefix}}imcPool]
 
