@@ -17,6 +17,10 @@ vlan_settings = {
 }
 
 vmedia_settings = {
+    'vMediaEnabled': 'true',
+    'vMediaEncryption': 'true',
+    'vMediaLowPowerUsb': 'true',
+    'vMediaMappings': '[]',
     'bootVMedia': 'false'
 }
 
@@ -65,6 +69,24 @@ lldp_settings = {
     'UplinkFailAction': 'linkDown'
 }
 
+firmware_settings = {
+    'FirmwareBundleVersion': '5.2(0.230092)',
+    'FirmwareModelFamily': 'UCSX-210C-M7',
+    'FirmwareTargetPlatform': 'FIAttached'
+}
+
+user_policy_settings = {
+    'EnablePasswordExpiry': False,
+    'EnforceStrongPassword': 'true',
+    'ForceSendPassword': 'false',
+    'GracePeriod': 0,
+    'NotificationPeriod': 15,
+    'PasswordExpiryDuration': 90,
+    'PasswordHistory': 0,
+    'UserRoleEnabled': 'true',
+    'AdminPassword': 'Cisco123'
+}
+
 policies_context = {
     'prefix': prefix,
     'organization': organization,
@@ -76,7 +98,10 @@ policies_context = {
     **smtp_settings,
     **ssh_settings,
     **kvm_settings,
-    **lldp_settings
+    **lldp_settings,
+    **user_policy_settings,
+    **firmware_settings,
+    **vmedia_settings
 }
 
 server_template_context = {

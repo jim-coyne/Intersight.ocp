@@ -124,13 +124,13 @@ Name: {{prefix}}fi-control-LocalAdmin
 #settings
 PasswordProperties:
   ClassId: iam.EndPointPasswordProperties
-  EnablePasswordExpiry: false
-  EnforceStrongPassword: true
-  ForceSendPassword: false
-  GracePeriod: 0
-  NotificationPeriod: 15
-  PasswordExpiryDuration: 90
-  PasswordHistory: 0
+  EnablePasswordExpiry: {{EnablePasswordExpiry}}
+  EnforceStrongPassword: {{EnforceStrongPassword}}
+  ForceSendPassword: {{ForceSendPassword}}
+  GracePeriod: {{GracePeriod}}
+  NotificationPeriod: {{NotificationPeriod}}
+  PasswordExpiryDuration: {{PasswordExpiryDuration}}
+  PasswordHistory: {{PasswordHistory}}
 ---
 ClassId: iam.EndPointUser
 Organization: {{organization}}
@@ -150,20 +150,20 @@ Name: {{prefix}}fi-control-Firmware
 Organization: {{organization}}
 #settings
 ModelBundleCombo:
-- BundleVersion: 5.2(0.230092)
+- BundleVersion: {{FirmwareBundleVersion}}
   ClassId: firmware.ModelBundleVersion
-  ModelFamily: UCSX-210C-M6
+  ModelFamily: {{FirmwareModelFamily}}
   ObjectType: firmware.ModelBundleVersion
-TargetPlatform: FIAttached
+TargetPlatform: {{FirmwareTargetPlatform}}
 ---
 ClassId: vmedia.Policy
 Name: {{prefix}}fi-control-vMedia
 Organization: {{organization}}
 #settings
-Enabled: true
-Encryption: true
-LowPowerUsb: true
-Mappings: []
+Enabled: {{vMediaEnabled}}
+Encryption: {{vMediaEncryption}}
+LowPowerUsb: {{vMediaLowPowerUsb}}
+Mappings: {{vMediaMappings}}
 ---
 ClassId: vnic.EthQosPolicy
 Name: {{prefix}}fi-control-QOS-server
@@ -391,13 +391,13 @@ Name: {{prefix}}fi-worker-LocalAdmin
 #settings
 PasswordProperties:
   ClassId: iam.EndPointPasswordProperties
-  EnablePasswordExpiry: false
-  EnforceStrongPassword: true
-  ForceSendPassword: false
-  GracePeriod: 0
-  NotificationPeriod: 15
-  PasswordExpiryDuration: 90
-  PasswordHistory: 0
+  EnablePasswordExpiry: {{EnablePasswordExpiry}}
+  EnforceStrongPassword: {{EnforceStrongPassword}}
+  ForceSendPassword: {{ForceSendPassword}}
+  GracePeriod: {{GracePeriod}}
+  NotificationPeriod: {{NotificationPeriod}}
+  PasswordExpiryDuration: {{PasswordExpiryDuration}}
+  PasswordHistory: {{PasswordHistory}}
 ---
 ClassId: iam.EndPointUser
 Organization: {{organization}}
@@ -417,20 +417,20 @@ Name: {{prefix}}fi-worker-Firmware
 Organization: {{organization}}
 #settings
 ModelBundleCombo:
-- BundleVersion: 5.2(0.230092)
+- BundleVersion: {{FirmwareBundleVersion}}
   ClassId: firmware.ModelBundleVersion
-  ModelFamily: UCSX-210C-M6
+  ModelFamily: {{FirmwareModelFamily}}
   ObjectType: firmware.ModelBundleVersion
-TargetPlatform: FIAttached
+TargetPlatform: {{FirmwareTargetPlatform}}
 ---
 ClassId: vmedia.Policy
 Name: {{prefix}}fi-worker-vMedia
 Organization: {{organization}}
 #settings
-Enabled: true
-Encryption: true
-LowPowerUsb: true
-Mappings: []
+Enabled: {{vMediaEnabled}}
+Encryption: {{vMediaEncryption}}
+LowPowerUsb: {{vMediaLowPowerUsb}}
+Mappings: {{vMediaMappings}}
 ---
 ClassId: vnic.EthQosPolicy
 Name: {{prefix}}fi-worker-QOS-server

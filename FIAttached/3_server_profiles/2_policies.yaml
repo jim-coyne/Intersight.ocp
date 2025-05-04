@@ -124,7 +124,7 @@ Name: prefix.fi-control-LocalAdmin
 #settings
 PasswordProperties:
   ClassId: iam.EndPointPasswordProperties
-  EnablePasswordExpiry: false
+  EnablePasswordExpiry: False
   EnforceStrongPassword: true
   ForceSendPassword: false
   GracePeriod: 0
@@ -152,7 +152,7 @@ Organization: default
 ModelBundleCombo:
 - BundleVersion: 5.2(0.230092)
   ClassId: firmware.ModelBundleVersion
-  ModelFamily: UCSX-210C-M6
+  ModelFamily: UCSX-210C-M7
   ObjectType: firmware.ModelBundleVersion
 TargetPlatform: FIAttached
 ---
@@ -391,7 +391,7 @@ Name: prefix.fi-worker-LocalAdmin
 #settings
 PasswordProperties:
   ClassId: iam.EndPointPasswordProperties
-  EnablePasswordExpiry: false
+  EnablePasswordExpiry: False
   EnforceStrongPassword: true
   ForceSendPassword: false
   GracePeriod: 0
@@ -419,7 +419,7 @@ Organization: default
 ModelBundleCombo:
 - BundleVersion: 5.2(0.230092)
   ClassId: firmware.ModelBundleVersion
-  ModelFamily: UCSX-210C-M6
+  ModelFamily: UCSX-210C-M7
   ObjectType: firmware.ModelBundleVersion
 TargetPlatform: FIAttached
 ---
