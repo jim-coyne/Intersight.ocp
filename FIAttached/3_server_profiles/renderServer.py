@@ -10,10 +10,6 @@ profiles_template = env.get_template('4_server_profiles.j2')
 prefix = 'prefix.'
 organization = 'default'
 
-device_connector_settings = {
-    'IntersightOnly': 'off'
-}
-
 vlan_settings = {
     'AllowedVlans': '"70"',
     'TrunkMode': 'TRUNK',
@@ -21,39 +17,38 @@ vlan_settings = {
 }
 
 vmedia_settings = {
-    'bootVMedia': False
+    'bootVMedia': 'False'
 }
 
 ipmi_settings = {
-    'Enable': False
+    'Enable': 'False'
 }
 
 ntp_settings = {
-    'EnableNTP': True,
+    'EnableNTP': 'True',
     'NTPServer': '10.0.10.1'
 }
 
 sol_settings = {
-    'Enabled': True
+    'Enabled': 'True'
 }
 
 smtp_settings = {
-    'EnableSMTP': True,
+    'EnableSMTP': 'True',
     'SMTPServer': 'mailcisco.com',
     'SMTPPort': 25,
-    'SMTPSender': 'cimc@cisco.com',
-    'Email1': 'jicoyne@cisco.com'
+
+
 }
 
 ssh_settings = {
-    'EnableSSH': True,
+    'EnableSSH': 'True',
     'SSHPort': 22,
     'SSHTimeout': 1800
 }
 
 kvm_settings = {
-    'EnableKVM': True,
-    'AllowTunneledKVM': True
+    'AllowTunneledKVM': 'true'
 }
 
 uuid_pool_context = {

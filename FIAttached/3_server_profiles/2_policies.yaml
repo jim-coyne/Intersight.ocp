@@ -84,8 +84,8 @@ ClassId: kvm.Policy
 Name: prefix.fi-control-TunneledKVM
 Organization: default
 #settings
-TunneledKvmEnabled: True
-Enable: True
+TunneledKvmEnabled: true
+Enable: 
 ---
 ClassId: bios.Policy
 Name: prefix.fi-control-BIOS
@@ -190,8 +190,6 @@ Organization: default
 Enabled: True
 SmtpServer: mailcisco.com
 SmtpPort: 25
-Sender: cimc@cisco.com
-Receivers: [jicoyne@cisco.com]
 ---
 ClassId: ssh.Policy
 Name: prefix.fi-control-SSH
@@ -205,7 +203,7 @@ ClassId: deviceconnector.Policy
 Name: prefix.fi-control-DeviceConnector
 Organization: default
 #settings
-IntersightOnly: off
+IntersightOnly: false
 ---
 ClassId: vnic.EthAdapterPolicy
 Name: prefix.fi-control-Linux
@@ -356,8 +354,7 @@ ClassId: kvm.Policy
 Name: prefix.fi-worker-TunneledKVM
 Organization: default
 #settings
-TunneledKvmEnabled: True
-Enable: True
+TunneledKvmEnabled: true
 ---
 ClassId: bios.Policy
 Name: prefix.fi-worker-BIOS
@@ -462,8 +459,7 @@ Organization: default
 Enabled: True
 SmtpServer: mailcisco.com
 SmtpPort: 25
-Sender: cimc@cisco.com
-Receivers: [jicoyne@cisco.com]
+
 ---
 ClassId: ssh.Policy
 Name: prefix.fi-worker-SSH
@@ -477,7 +473,7 @@ ClassId: deviceconnector.Policy
 Name: prefix.fi-worker-DeviceConnector
 Organization: default
 #settings
-IntersightOnly: off
+IntersightOnly: false
 ---
 ClassId: vnic.EthAdapterPolicy
 Name: prefix.fi-worker-Linux

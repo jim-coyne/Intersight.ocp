@@ -190,8 +190,6 @@ Organization: {{organization}}
 Enabled: {{EnableSMTP}}
 SmtpServer: {{SMTPServer}}
 SmtpPort: {{SMTPPort}}
-Sender: {{SMTPSender}}
-Receivers: [{{Email1}}]
 ---
 ClassId: ssh.Policy
 Name: {{prefix}}fi-control-SSH
@@ -205,7 +203,7 @@ ClassId: deviceconnector.Policy
 Name: {{prefix}}fi-control-DeviceConnector
 Organization: {{organization}}
 #settings
-IntersightOnly: {{IntersightOnly}}
+IntersightOnly: off
 ---
 ClassId: vnic.EthAdapterPolicy
 Name: {{prefix}}fi-control-Linux
@@ -357,7 +355,6 @@ Name: {{prefix}}fi-worker-TunneledKVM
 Organization: {{organization}}
 #settings
 TunneledKvmEnabled: {{AllowTunneledKVM}}
-Enable: {{EnableKVM}}
 ---
 ClassId: bios.Policy
 Name: {{prefix}}fi-worker-BIOS
@@ -462,8 +459,7 @@ Organization: {{organization}}
 Enabled: {{EnableSMTP}}
 SmtpServer: {{SMTPServer}}
 SmtpPort: {{SMTPPort}}
-Sender: {{SMTPSender}}
-Receivers: [{{Email1}}]
+
 ---
 ClassId: ssh.Policy
 Name: {{prefix}}fi-worker-SSH
@@ -477,7 +473,7 @@ ClassId: deviceconnector.Policy
 Name: {{prefix}}fi-worker-DeviceConnector
 Organization: {{organization}}
 #settings
-IntersightOnly: {{IntersightOnly}}
+IntersightOnly: off
 ---
 ClassId: vnic.EthAdapterPolicy
 Name: {{prefix}}fi-worker-Linux
