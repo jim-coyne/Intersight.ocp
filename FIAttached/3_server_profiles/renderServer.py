@@ -31,7 +31,7 @@ ipmi_settings = {
 
 ntp_settings = {
     'EnableNTP': True,
-    'NTPServer': ''
+    'NTPServer': '10.0.10.1'
 }
 
 sol_settings = {
@@ -80,36 +80,13 @@ policies_context = {
 
 server_template_context = {
     'prefix': prefix,
-    'organization': organization,
-    'template_name': 'ExampleServerTemplate',
-    **device_connector_settings,
-    **vlan_settings,
-    **vmedia_settings,
-    **ipmi_settings,
-    **ntp_settings,
-    **sol_settings,
-    **smtp_settings,
-    **ssh_settings,
-    **kvm_settings
+    'organization': organization
 }
 
 server_profiles_context = {
     'prefix': prefix,
     'organization': organization,
-    'domain': 'domain',
-    'profiles': [
-        {'name': 'Server01', 'uuid': '0000-000000100001'},
-        {'name': 'Server02', 'uuid': '0000-000000100002'}
-    ],
-    **device_connector_settings,
-    **vlan_settings,
-    **vmedia_settings,
-    **ipmi_settings,
-    **ntp_settings,
-    **sol_settings,
-    **smtp_settings,
-    **ssh_settings,
-    **kvm_settings
+    'domain': 'domain'
 }
 
 with open('1_UUID_Pool.yaml', 'w') as f:
