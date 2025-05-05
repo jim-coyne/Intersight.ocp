@@ -66,7 +66,7 @@ Organization: {{organization}}
 BootDevices:
 - Bootloader:
   ObjectType: boot.LocalDisk
-  Enabled: true
+  Enabled: {{BootLocalDiskEnabled}}
   Name: M2
   Slot: MSTOR-RAID
 - ObjectType: boot.VirtualMedia
@@ -78,7 +78,7 @@ ClassId: ipmioverlan.Policy
 Name: {{prefix}}fi-control-IPMI
 Organization: {{organization}}
 #settings
-Enabled: {{Enable}}
+Enabled: {{EnableIPMI}}
 ---
 ClassId: kvm.Policy
 Name: {{prefix}}fi-control-TunneledKVM
@@ -138,7 +138,7 @@ Name: admin
 ---
 ClassId: iam.EndPointUserRole
 #settings
-Enabled: true
+Enabled: {{UserRoleEnabled}}
 EndPointRole: 
   - MoRef:iam.EndPointRole[$filter:Type eq 'IMC' and Name eq 'admin']
 EndPointUser: MoRef[{{organization}}\admin]
@@ -176,15 +176,11 @@ Organization: {{organization}}
 Enabled: {{Enabled}}
 ---
 ClassId: ntp.Policy
-ObjectType: ntp.Policy
-Name: {{prefix}}fi-worker-NTP
+Name: {{prefix}}fi-control-NTP
 Organization: {{organization}}
 #settings
 Enabled: {{EnableNTP}}
-NtpServers: 
-  {% for server in NtpServers %}
-  - {{server}}
-  {% endfor %}
+NtpServers: {{NTPServer}}
 ---
 ClassId: smtp.Policy
 Name: {{prefix}}fi-control-SMTP
@@ -204,6 +200,12 @@ Organization: {{organization}}
 Enabled: {{EnableSSH}}
 Port: {{SSHPort}}
 Timeout: {{SSHTimeout}}
+---
+ClassId: deviceconnector.Policy
+Name: {{prefix}}fi-control-DeviceConnector
+Organization: {{organization}}
+#settings
+IntersightOnly: off
 ---
 ClassId: vnic.EthAdapterPolicy
 Name: {{prefix}}fi-control-Linux
@@ -287,9 +289,9 @@ Organization: {{organization}}
 VlanSettings:
   ClassId: vnic.VlanSettings
   ObjectType: vnic.VlanSettings
-  AllowedVlans: {{AllowedVlans}}
-  DefaultVlan: {{DefaultVLAN}}
-  Mode: {{TrunkMode}}
+  AllowedVlans: {{worker_AllowedVlans}}
+  DefaultVlan: {{worker_DefaultVLAN}}
+  Mode: {{worker_TrunkMode}}
 ---
 ClassId: vnic.EthIf
 Name: Eth0
@@ -336,11 +338,11 @@ Organization: {{organization}}
 BootDevices:
 - Bootloader:
   ObjectType: boot.LocalDisk
-  Enabled: true
+  Enabled: {{worker_BootLocalDiskEnabled}}
   Name: M2
   Slot: MSTOR-RAID
 - ObjectType: boot.VirtualMedia
-  Enabled: {{bootVMedia}}
+  Enabled: {{worker_bootVMedia}}
   Name: CIMC-DVD
   Subtype: cimc-mapped-dvd
 ---
@@ -348,13 +350,13 @@ ClassId: ipmioverlan.Policy
 Name: {{prefix}}fi-worker-IPMI
 Organization: {{organization}}
 #settings
-Enabled: {{Enable}}
+Enabled: {{worker_EnableIPMI}}
 ---
 ClassId: kvm.Policy
 Name: {{prefix}}fi-worker-TunneledKVM
 Organization: {{organization}}
 #settings
-TunneledKvmEnabled: {{AllowTunneledKVM}}
+TunneledKvmEnabled: {{worker_AllowTunneledKVM}}
 ---
 ClassId: bios.Policy
 Name: {{prefix}}fi-worker-BIOS
@@ -371,7 +373,7 @@ Name: {{prefix}}fi-worker-ALLOWED-VLANS
 Organization: {{organization}}
 VlanSettings:
   ClassId: fabric.VlanSettings
-  AllowedVlans: {{AllowedVlans}}
+  AllowedVlans: {{worker_AllowedVlans}}
   QinqEnabled: false
   NativeVlan: 1
 ---
@@ -379,14 +381,14 @@ ClassId: fabric.EthNetworkControlPolicy
 Name: {{prefix}}fi-worker-LLDP
 Organization: {{organization}} 
 #settings
-CdpEnabled: {{CdpEnabled}}
-ForgeMac: {{ForgeMac}}
+CdpEnabled: {{worker_CdpEnabled}}
+ForgeMac: {{worker_ForgeMac}}
 LldpSettings:
   ClassId: fabric.LldpSettings
-  ReceiveEnabled: {{LldpReceiveEnabled}}
-  TransmitEnabled: {{LldpTransmitEnabled}}
-MacRegistrationMode: {{MacRegistrationMode}}
-UplinkFailAction: {{UplinkFailAction}}
+  ReceiveEnabled: {{worker_LldpReceiveEnabled}}
+  TransmitEnabled: {{worker_LldpTransmitEnabled}}
+MacRegistrationMode: {{worker_MacRegistrationMode}}
+UplinkFailAction: {{worker_UplinkFailAction}}
 ---
 ClassId: iam.EndPointUserPolicy
 Organization: {{organization}}
@@ -394,13 +396,13 @@ Name: {{prefix}}fi-worker-LocalAdmin
 #settings
 PasswordProperties:
   ClassId: iam.EndPointPasswordProperties
-  EnablePasswordExpiry: {{EnablePasswordExpiry}}
-  EnforceStrongPassword: {{EnforceStrongPassword}}
-  ForceSendPassword: {{ForceSendPassword}}
-  GracePeriod: {{GracePeriod}}
-  NotificationPeriod: {{NotificationPeriod}}
-  PasswordExpiryDuration: {{PasswordExpiryDuration}}
-  PasswordHistory: {{PasswordHistory}}
+  EnablePasswordExpiry: {{worker_EnablePasswordExpiry}}
+  EnforceStrongPassword: {{worker_EnforceStrongPassword}}
+  ForceSendPassword: {{worker_ForceSendPassword}}
+  GracePeriod: {{worker_GracePeriod}}
+  NotificationPeriod: {{worker_NotificationPeriod}}
+  PasswordExpiryDuration: {{worker_PasswordExpiryDuration}}
+  PasswordHistory: {{worker_PasswordHistory}}
 ---
 ClassId: iam.EndPointUser
 Organization: {{organization}}
@@ -408,32 +410,32 @@ Name: admin
 ---
 ClassId: iam.EndPointUserRole
 #settings
-Enabled: true
+Enabled: {{worker_UserRoleEnabled}}
 EndPointRole: 
   - MoRef:iam.EndPointRole[$filter:Type eq 'IMC' and Name eq 'admin']
 EndPointUser: MoRef[{{organization}}\admin]
 EndPointUserPolicy: MoRef[{{organization}}\{{prefix}}fi-worker-LocalAdmin]
-Password: {{AdminPassword}}
+Password: {{worker_AdminPassword}}
 ---
 ClassId: firmware.Policy
 Name: {{prefix}}fi-worker-Firmware
 Organization: {{organization}}
 #settings
 ModelBundleCombo:
-- BundleVersion: {{FirmwareBundleVersion}}
+- BundleVersion: {{worker_FirmwareBundleVersion}}
   ClassId: firmware.ModelBundleVersion
-  ModelFamily: {{FirmwareModelFamily}}
+  ModelFamily: {{worker_FirmwareModelFamily}}
   ObjectType: firmware.ModelBundleVersion
-TargetPlatform: {{FirmwareTargetPlatform}}
+TargetPlatform: {{worker_FirmwareTargetPlatform}}
 ---
 ClassId: vmedia.Policy
 Name: {{prefix}}fi-worker-vMedia
 Organization: {{organization}}
 #settings
-Enabled: {{vMediaEnabled}}
-Encryption: {{vMediaEncryption}}
-LowPowerUsb: {{vMediaLowPowerUsb}}
-Mappings: {{vMediaMappings}}
+Enabled: {{worker_vMediaEnabled}}
+Encryption: {{worker_vMediaEncryption}}
+LowPowerUsb: {{worker_vMediaLowPowerUsb}}
+Mappings: {{worker_vMediaMappings}}
 ---
 ClassId: vnic.EthQosPolicy
 Name: {{prefix}}fi-worker-QOS-server
@@ -443,99 +445,100 @@ ClassId: sol.Policy
 Name: {{prefix}}fi-worker-SOL
 Organization: {{organization}}
 #settings
-Enabled: {{Enabled}}
+Enabled: {{worker_Enabled}}
 ---
 ClassId: ntp.Policy
-ObjectType: ntp.Policy
-Name: {{prefix}}fi-control-NTP
+Name: {{prefix}}fi-worker-NTP
 Organization: {{organization}}
 #settings
-Enabled: {{EnableNTP}}
-NtpServers: 
-  {% for server in NtpServers %}
-  - {{server}}
-  {% endfor %}
+Enabled: {{worker_EnableNTP}}
+NtpServers: {{worker_NTPServer}}
 ---
 ClassId: smtp.Policy
 Name: {{prefix}}fi-worker-SMTP
 Organization: {{organization}}
 #settings
-Enabled: {{EnableSMTP}}
-MinSeverity: {{SMTPMinSeverity}}
-SenderEmail: {{SMTPSenderEmail}}
-SmtpRecipients: {{SMTPRecipients}}
-SmtpServer: {{SMTPServer}}
-SmtpPort: {{SMTPPort}}
-
+Enabled: {{worker_EnableSMTP}}
+MinSeverity: {{worker_SMTPMinSeverity}}
+SenderEmail: {{worker_SMTPSenderEmail}}
+SmtpRecipients: {{worker_SMTPRecipients}}
+SmtpServer: {{worker_SMTPServer}}
+SmtpPort: {{worker_SMTPPort}}
 ---
 ClassId: ssh.Policy
 Name: {{prefix}}fi-worker-SSH
 Organization: {{organization}}
 #settings
-Enabled: {{EnableSSH}}
-Port: {{SSHPort}}
-Timeout: {{SSHTimeout}}
+Enabled: {{worker_EnableSSH}}
+Port: {{worker_SSHPort}}
+Timeout: {{worker_SSHTimeout}}
+---
+ClassId: deviceconnector.Policy
+Name: {{prefix}}fi-worker-DeviceConnector
+Organization: {{organization}}
+#settings
+IntersightOnly: off
 ---
 ClassId: vnic.EthAdapterPolicy
 Name: {{prefix}}fi-worker-Linux
 Organization: {{organization}}
 #settings
-AdvancedFilter: {{EthAdapterAdvancedFilter}}
+AdvancedFilter: {{worker_EthAdapterAdvancedFilter}}
 ArfsSettings:
   ClassId: vnic.ArfsSettings
-  Enabled: {{EthAdapterArfsEnabled}}
+  Enabled: {{worker_EthAdapterArfsEnabled}}
 CompletionQueueSettings:
   ClassId: vnic.CompletionQueueSettings
-  Count: {{EthAdapterCompletionQueueCount}}
-  RingSize: {{EthAdapterCompletionQueueRingSize}}
-GeneveEnabled: {{EthAdapterGeneveEnabled}}
-InterruptScaling: {{EthAdapterInterruptScaling}}
+  Count: {{worker_EthAdapterCompletionQueueCount}}
+  RingSize: {{worker_EthAdapterCompletionQueueRingSize}}
+GeneveEnabled: {{worker_EthAdapterGeneveEnabled}}
+InterruptScaling: {{worker_EthAdapterInterruptScaling}}
 InterruptSettings:
   ClassId: vnic.EthInterruptSettings
-  CoalescingTime: {{EthAdapterInterruptCoalescingTime}}
-  CoalescingType: {{EthAdapterInterruptCoalescingType}}
-  Count: {{EthAdapterInterruptCount}}
-  Mode: {{EthAdapterInterruptMode}}
+  CoalescingTime: {{worker_EthAdapterInterruptCoalescingTime}}
+  CoalescingType: {{worker_EthAdapterInterruptCoalescingType}}
+  Count: {{worker_EthAdapterInterruptCount}}
+  Mode: {{worker_EthAdapterInterruptMode}}
 NvgreSettings:
   ClassId: vnic.NvgreSettings
-  Enabled: {{EthAdapterNvgreEnabled}}
+  Enabled: {{worker_EthAdapterNvgreEnabled}}
 PtpSettings:
   ClassId: vnic.PtpSettings
-  Enabled: {{EthAdapterPtpEnabled}}
+  Enabled: {{worker_EthAdapterPtpEnabled}}
 RoceSettings:
   ClassId: vnic.RoceSettings
-  ClassOfService: {{EthAdapterRoceClassOfService}}
-  Enabled: {{EthAdapterRoceEnabled}}
-  MemoryRegions: {{EthAdapterRoceMemoryRegions}}
-  QueuePairs: {{EthAdapterRoceQueuePairs}}
-  ResourceGroups: {{EthAdapterRoceResourceGroups}}
-  Version: {{EthAdapterRoceVersion}}
+  Class OfService: {{worker_EthAdapterRoceClassOfService}}
+  Enabled: {{worker_EthAdapterRoceEnabled}}
+  MemoryRegions: {{worker_EthAdapterRoceMemoryRegions}}
+  QueuePairs: {{worker_EthAdapterRoceQueuePairs}}
+  ResourceGroups: {{worker_EthAdapterRoceResourceGroups}}
+  Version: {{worker_EthAdapterRoceVersion}}
 RssHashSettings:
   ClassId: vnic.RssHashSettings
-  Ipv4Hash: {{EthAdapterRssIpv4Hash}}
-  Ipv6ExtHash: {{EthAdapterRssIpv6ExtHash}}
-  Ipv6Hash: {{EthAdapterRssIpv6Hash}}
-  TcpIpv4Hash: {{EthAdapterRssTcpIpv4Hash}}
-  TcpIpv6ExtHash: {{EthAdapterRssTcpIpv6ExtHash}}
-  TcpIpv6Hash: {{EthAdapterRssTcpIpv6Hash}}
-  UdpIpv4Hash: {{EthAdapterRssUdpIpv4Hash}}
-  UdpIpv6Hash: {{EthAdapterRssUdpIpv6Hash}}
-RssSettings: {{EthAdapterRssSettings}}
+  Ipv4Hash: {{worker_EthAdapterRssIpv4Hash}}
+  Ipv6ExtHash: {{worker_EthAdapterRssIpv6ExtHash}}
+  Ipv6Hash: {{worker_EthAdapterRssIpv6Hash}}
+  TcpIpv4Hash: {{worker_EthAdapterRssTcpIpv4Hash}}
+  TcpIpv6ExtHash: {{worker_EthAdapterRssTcpIpv6ExtHash}}
+  TcpIpv6Hash: {{worker_EthAdapterRssTcpIpv6Hash}}
+  UdpIpv4Hash: {{worker_EthAdapterRssUdpIpv4Hash}}
+  UdpIpv6Hash: {{worker_EthAdapterRssUdpIpv6Hash}}
+RssSettings: {{worker_EthAdapterRssSettings}}
 RxQueueSettings:
   ClassId: vnic.EthRxQueueSettings
-  Count: {{EthAdapterRxQueueCount}}
-  RingSize: {{EthAdapterRxQueueRingSize}}
+  Count: {{worker_EthAdapterRxQueueCount}}
+  RingSize: {{worker_EthAdapterRxQueueRingSize}}
 TcpOffloadSettings:
   ClassId: vnic.TcpOffloadSettings
-  LargeReceive: {{EthAdapterTcpLargeReceive}}
-  LargeSend: {{EthAdapterTcpLargeSend}}
-  RxChecksum: {{EthAdapterTcpRxChecksum}}
-  TxChecksum: {{EthAdapterTcpTxChecksum}}
+  LargeReceive: {{worker_EthAdapterTcpLargeReceive}}
+  LargeSend: {{worker_EthAdapterTcpLargeSend}}
+  RxChecksum: {{worker_EthAdapterTcpRxChecksum}}
+  TxChecksum: {{worker_EthAdapterTcpTxChecksum}}
 TxQueueSettings:
   ClassId: vnic.EthTxQueueSettings
-  Count: {{EthAdapterTxQueueCount}}
-  RingSize: {{EthAdapterTxQueueRingSize}}
-UplinkFailbackTimeout: {{EthAdapterUplinkFailbackTimeout}}
+  Count: {{worker_EthAdapterTxQueueCount}}
+  RingSize: {{worker_EthAdapterTxQueueRingSize}}
+UplinkFailbackTimeout: {{worker_EthAdapterUplinkFailbackTimeout}}
 VxlanSettings:
   ClassId: vnic.VxlanSettings
-  Enabled: {{EthAdapterVxlanEnabled}}
+  Enabled: {{worker_EthAdapterVxlanEnabled}}
