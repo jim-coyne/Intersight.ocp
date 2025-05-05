@@ -1,4 +1,4 @@
-# Intersight Configuration for Red Hat OpenShift
+# Intersight Configuration Templates
 
 Configuration templates for deploying pools, policies and profiles using isctl.
 
