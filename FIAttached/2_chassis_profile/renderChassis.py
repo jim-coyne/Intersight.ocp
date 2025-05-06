@@ -26,7 +26,7 @@ ippool_settings = {
 macPool_settings = {
     'AmacFrom': '00:25:B5:AA:10:00',
     'AblockSize': 256,
-    'BmacFrom': '00:25:B5:AA:10:00',
+    'BmacFrom': '00:25:B5:BB:10:00',  
     'BblockSize': 256
 }
 
@@ -42,7 +42,10 @@ policies_context = {
     'organization': organization,
     'enableIB': enableIB,
     'enableOOB': enableOOB,
-    'inbandVLAN': inbandVLAN
+    'inbandVLAN': inbandVLAN,
+    'powerRestoreState': 'AlwaysOff',
+    'powerSaveMode': 'Enabled',
+    'redundancyMode': 'Grid'
 }
 
 chassis_context = {

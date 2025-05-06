@@ -34,18 +34,21 @@ VlanPortOptimizationEnabled: false
 ClassId: snmp.Policy
 Name: prefix.snmp
 Organization: default
-CommunityAccess: Disabled # Disabled
+CommunityAccess: Disabled
 AccessCommunityString: ""
-Enabled: true
+Enabled: True
 EngineId: ""
 SnmpPort: 161
-SnmpTraps: []
-SnmpUsers: []
-SysContact: ""
-SysLocation: ""
-TrapCommunity: ""
+SnmpTraps:
+
+SnmpUsers:
+
+SysContact: "jicoyne@cisco.com"
+SysLocation: "US"
+TrapCommunity: "public"
 V2Enabled: true
 V3Enabled: true
+
 ---
 ClassId: fabric.SystemQosPolicy
 Organization: default

@@ -32,20 +32,27 @@ UdldSettings:
 VlanPortOptimizationEnabled: false
 ---
 ClassId: snmp.Policy
-Name: {{prefix}}snmp
-Organization: {{organization}}
-CommunityAccess: {{snmp.CommunityAccess}} # Disabled
+Name: {{ prefix }}snmp
+Organization: {{ organization }}
+CommunityAccess: {{ snmp.CommunityAccess }}
 AccessCommunityString: ""
-Enabled: true
+Enabled: {{ snmp.Enabled }}
 EngineId: ""
-SnmpPort: 161
-SnmpTraps: []
-SnmpUsers: []
-SysContact: ""
-SysLocation: ""
-TrapCommunity: ""
+SnmpPort: {{ snmp.SnmpPort }}
+SnmpTraps:
+{% for trap in snmp.SnmpTraps %}
+  - {{ trap }}
+{% endfor %}
+SnmpUsers:
+{% for user in snmp.SnmpUsers %}
+  - {{ user }}
+{% endfor %}
+SysContact: "{{ snmp.SysContact }}"
+SysLocation: "{{ snmp.SysLocation }}"
+TrapCommunity: "{{ snmp.TrapCommunity }}"
 V2Enabled: true
 V3Enabled: true
+
 ---
 ClassId: fabric.SystemQosPolicy
 Organization: {{organization}}

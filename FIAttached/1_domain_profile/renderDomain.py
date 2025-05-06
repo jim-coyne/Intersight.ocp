@@ -9,6 +9,7 @@ domainprofile_template = env.get_template('4_domain_profile.j2')
 
 prefix = 'prefix.'
 organization = 'default'
+domain = 'domain'
 
 vlan_range = range(70, 71)  
 port_ids = range(1, 17)     
@@ -18,13 +19,27 @@ slot_id = 1
 ntpserver1 = '172.20.10.10'
 ntpserver2 = '172.20.10.11'
 timezone = 'America/New_York'
+
 dns1 = '172.20.10.60'
 dns2 = '172.20.10.59'
+
 snmp_community_access = 'Disabled'
-domain = 'domain'
+snmp_community_access = 'Disabled'
+snmp_enabled = True
+snmp_port = 161
+snmp_sys_contact = 'jicoyne@cisco.com'
+snmp_sys_location = 'US'
+snmp_trap_community = 'public'
 
 snmp = {
-    'CommunityAccess': snmp_community_access
+    'CommunityAccess': snmp_community_access,
+    'Enabled': snmp_enabled,
+    'SnmpPort': snmp_port,
+    'SnmpTraps': '',
+    'SnmpUsers': '',
+    'SysContact': snmp_sys_contact,
+    'SysLocation': snmp_sys_location,
+    'TrapCommunity': snmp_trap_community,
 }
 
 with open('1_vlanpolicy.yaml', 'w') as vlan_output_file:

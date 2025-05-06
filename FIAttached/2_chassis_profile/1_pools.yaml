@@ -13,17 +13,8 @@ Organization: default
 #settings
 MacBlocks:
 - ClassId: macpool.Block
-  From: 00:25:B5:AA:10:00 # 00:25:B5:BB:10:00
+  From: 00:25:B5:BB:10:00 # 00:25:B5:BB:10:00
   Size: 256 # 256
----
-ClassId: uuidpool.Pool
-Name: prefix.uuid
-Organization: default
-Prefix: 00000000-0010-0000
-UuidSuffixBlocks:
-- ClassId: uuidpool.UuidBlock
-  From: 0000-000000100001
-  Size: 256
 ---
 ClassId: resourcepool.Pool
 Name: prefix.ServerPool

@@ -24,9 +24,9 @@ DynamicRebalancing: Enabled
 ExtendedPowerCapacity: Enabled
 PowerPriority: Low
 PowerProfiling: Enabled
-PowerRestoreState: AlwaysOff
-PowerSaveMode: Enabled
-RedundancyMode: Grid
+PowerRestoreState: AlwaysOff # default, AlwaysOff
+PowerSaveMode: Enabled # default, Enabled
+RedundancyMode: Grid # default, Grid
 ---
 ClassId: thermal.Policy
 Name: prefix.Thermal

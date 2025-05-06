@@ -10,6 +10,7 @@ profiles_template = env.get_template('4_server_profiles.j2')
 prefix = 'prefix.'
 organization = 'default'
 
+
 vlan_settings = {
     'AllowedVlans': '"70"',
     'TrunkMode': 'TRUNK',
@@ -96,13 +97,6 @@ kvm_settings = {
     'AllowTunneledKVM': 'true'
 }
 
-uuid_pool_context = {
-    'prefix': prefix,
-    'organization': organization,
-    'uuid_block_from': '0000-000000100001',
-    'uuid_block_size': 256
-}
-
 lldp_settings = {
     'CdpEnabled': 'true',
     'ForgeMac': 'allow',
@@ -128,6 +122,23 @@ user_policy_settings = {
     'PasswordHistory': 0,
     'UserRoleEnabled': 'true',
     'AdminPassword': 'Cisco123'
+}
+
+uuid_pool_context = {
+    'prefix': prefix,
+    'organization': organization,
+    'mac_block_from': '00:25:B5:AA:10:00',
+    'mac_block_size': 256,
+    'uuid_prefix': '00000000-0010-0000',
+    'uuid_block_from': '0000-000000100001',
+    'uuid_block_size': 256,
+    'server_serials': "'XXXXXXX','XXXXXXX','XXXXXXX','XXXXXXX'",
+    'ip_gateway': '172.20.70.1',
+    'ip_netmask': '255.255.255.0',
+    'ip_primary_dns': '172.20.70.60',
+    'ip_secondary_dns': '172.20.70.59',
+    'ip_block_from': '172.20.70.1',
+    'ip_block_to': '172.20.70.250'
 }
 
 policies_context = {

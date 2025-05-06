@@ -6,7 +6,7 @@ ClassId: fabric.SwitchProfile
 Name: {{prefix}}{{domain}}A
 SwitchClusterProfile: MoRef[{{organization}}\{{prefix}}{{domain}}]
 PolicyBucket:
-  - MoRef:fabric.EthNetworkPolicy[{{organization}}\{{prefix}}vlanA]
+  - MoRef:fabric.EthNetworkPolicy[{{organization}}\{{prefix}}vlansA]
   - MoRef:fabric.PortPolicy[{{organization}}\{{prefix}}server-ports]
   - MoRef:fabric.SystemQosPolicy[{{organization}}\{{prefix}}QoS]
   - MoRef:networkconfig.Policy[{{organization}}\{{prefix}}dns]

@@ -1,49 +1,37 @@
-## A and B pools already created; this is for additional pools.
-#ClassId: macpool.Pool
-#Name: 
-#Organization: {{organization}}
-##settings
-#MacBlocks:
-#- ClassId: macpool.Block
-#  From: 00:25:B5:AA:10:00
-#  Size: 256
 ---
 ClassId: uuidpool.Pool
 Name: {{prefix}}uuid
 Organization: {{organization}}
-Prefix: 00000000-0010-0000
+Prefix: {{uuid_prefix}}
 UuidSuffixBlocks:
 - ClassId: uuidpool.UuidBlock
-  From: 0000-000000100001
-  Size: 256
+  From: {{uuid_block_from}}
+  Size: {{uuid_block_size}}
 ---
 ClassId: resourcepool.Pool
 Name: {{prefix}}serverPool
 Organization: {{organization}}
-
 ResourcePoolParameters:
   ClassId: resourcepool.ServerPoolParameters
   ManagementMode: Intersight
   ObjectType: resourcepool.ServerPoolParameters
 ResourceType: Server
 Selectors:
-
 #- ClassId: resource.Selector
-#  Selector: /api/v1/compute/Blades?$filter=(Serial in ('XXXXXXX','XXXXXXX','XXXXXXX','XXXXXXX'))
+#  Selector: /api/v1/compute/Blades?$filter=(Serial in ({{server_serials}}))
 
-#---
-# Already created in step 2 this would be an additional pool
-#
-# ClassId: ippool.Pool
-# Name: 
-# Organization: {{organization}}
-# IpV4Config:
-#   ClassId: ippool.IpV4Config
-#   Gateway: 172.20.70.1
-#   Netmask: 255.255.255.0
-#   PrimaryDns: 172.20.70.60
-#   SecondaryDns: 172.20.70.59
-# IpV4Blocks:
-# - ClassId: ippool.IpV4Block
-#   From: 172.20.70.1
-#  To: 172.20.70.250
+# InbandPool
+
+#ClassId: ippool.Pool
+#Name: {{prefix}}inbandPool
+#Organization: {{organization}}
+#IpV4Config:
+#  ClassId: ippool.IpV4Config
+#  Gateway: {{ip_gateway}}
+#  Netmask: {{ip_netmask}}
+#  PrimaryDns: {{ip_primary_dns}}
+#  SecondaryDns: {{ip_secondary_dns}}
+#IpV4Blocks:
+#- ClassId: ippool.IpV4Block
+#  From: {{ip_block_from}}
+#  To: {{ip_block_to}}
